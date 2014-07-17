@@ -1,0 +1,20 @@
+{
+  "name": "polymer-snippets",
+  "private": true,
+  "version": "0.0.1",
+  "authors": [
+    "Eric Bidelman <ebidel@gmail.com>"
+  ],
+  "description": "Small, useful, samples that show how to do things, the Polymer way ",
+  "keywords": "polymer, web-components, samples",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "https://github.com/PolymerLabs/polymer-snippets",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.4",
+    "polymer-test-tools": "Polymer/polymer-test-tools#~0.3.3"
+  }
+}
