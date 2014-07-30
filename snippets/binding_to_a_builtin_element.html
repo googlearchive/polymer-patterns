@@ -1,0 +1,13 @@
+<link rel="import" href="../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div><input type="range" id="range" value="{{val}}"></div>
+    <div id="val">{{val}}</div>
+  </template>
+  <script>
+    Polymer('my-element', {
+      val: 10
+    });
+  </script>
+</polymer-element>

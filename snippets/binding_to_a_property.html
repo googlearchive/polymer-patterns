@@ -1,0 +1,26 @@
+<!--
+Shows simple use of two-way data binding in a Polymer element.
+
+For Polymer elements, the model is the element itself.
+Set the default value for the model properties inside the `ready`
+callback. Use double-mustaches (`{{}}`) to display the model value.
+-->
+
+<link rel="import" href="../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div>
+      <label for="color">Favorite color</label>
+      <input type="text" id="color" value="{{color}}">
+    </div>
+    <div id="result">My favorite color is {{color}}.</div>
+  </template>
+  <script>
+    Polymer('my-element', {
+      ready: function() {
+        this.color = 'red';
+      }
+    });
+  </script>
+</polymer-element>

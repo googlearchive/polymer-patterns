@@ -1,0 +1,32 @@
+<link rel="import" href="../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div id="unsorted">
+      <h2>Unsorted</h2>
+      <template repeat="{{fruit in fruits}}">
+        <div>{{fruit}}</div>
+      </template>
+    </div>
+    <div id="sorted">
+      <h2>Sorted</h2>
+      <template repeat="{{fruit in fruits | simpleSort}}">
+        <div>{{fruit}}</div>
+      </template>
+    </div>
+  </template>
+  <script>
+    Polymer('my-element', {
+      fruits: ["orange", "strawberry", "kiwi"],
+      simpleSort: function(items) {
+        var temp = items.slice(0);
+        temp.sort(function (a, b) {
+          if (a < b)  return -1;
+          if (a > b) return 1;
+          return 0;
+        });
+        return temp;
+      }
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,36 @@
+<link rel="import" href="../components/polymer/polymer.html">
+
+<polymer-element name="my-element" attributes="limit">
+  <template>
+    <template repeat="{{item in renderedData}}">
+        <div class="item">{{item}}</div>
+    </template>
+    <hr>
+    <template if="{{offset + limit < data.length}}">
+      <div id="next" on-click="{{showNext}}">Next</div>
+    </template>
+  </template>
+  <script>
+    Polymer('my-element', {
+      offset: 0,
+      limit: {
+        reflect: true
+      },
+      data: ["apple", "apricot", "avocado", "banana", "blackberry",
+             "cantaloupe", "cherry", "coconut", "date", "fig", "guava",
+             "jujube", "lime", "loquat", "lychee", "mango", "quince", "star fruit"
+      ],
+      ready: function() {
+        this.setRenderedData();
+      },
+      showNext: function(e) {
+        e.preventDefault();
+        this.offset += this.limit;
+        this.setRenderedData();
+      },
+      setRenderedData: function() {
+        this.renderedData = this.data.slice(this.offset, this.offset + this.limit);
+      }
+    });
+  </script>
+</polymer-element>

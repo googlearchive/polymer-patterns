@@ -1,0 +1,23 @@
+<link rel="import" href="../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div id="name">{{person.name.first}} {{person.name.last}}</div>
+    <div id="title">{{person.title}}</div>
+    <div id="company">{{person.company.name}}</div>
+  </template>
+  <script>
+    Polymer('my-element', {
+      person: {
+        name: {
+          first: "Eric",
+          last: "Bidelman"
+        },
+        title: "Digital Jedi",
+        company: {
+          name: "Google"
+        }
+      }
+    });
+  </script>
+</polymer-element>

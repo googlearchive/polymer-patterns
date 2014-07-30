@@ -1,0 +1,23 @@
+<link rel="import" href="../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+  <template if="{{!showAnswer}}">
+      <div id="question">What is the answer to "The Ultimate Question of Life, the Universe, and Everything"?
+      </div>
+      <div id="show" on-click="{{enableShowAnswer}}">Show</div>
+    </template>
+    <template if="{{showAnswer}}">
+      <div id="answer">42</div>
+    </template>
+  </template>
+  <script>
+    Polymer('my-element', {
+      showAnswer: false,
+      enableShowAnswer: function(e, detail, sender) {
+        e.preventDefault();
+        this.showAnswer = true;
+      }
+    });
+  </script>
+</polymer-element>
