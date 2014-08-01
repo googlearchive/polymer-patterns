@@ -1,0 +1,20 @@
+<link rel="import" href="../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div>
+      <label id="myLabel" for="myInput">
+        <template if="{{checked}}">Uncheck</template>
+        <template if="{{!checked}}">Check</template>
+      </label><br>
+      <input type="checkbox" id="myInput" checked="{{checked}}">
+    </div>
+  </template>
+  <script>
+    Polymer('my-element', {
+      ready: function() {
+        this.checked = false;
+      }
+    });
+  </script>
+</polymer-element>

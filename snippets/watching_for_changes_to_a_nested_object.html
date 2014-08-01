@@ -1,0 +1,27 @@
+<link rel="import" href="../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div>{{thing.color}}</div>
+    <button on-click="{{changeColor}}">Change color</button>
+    <p>{{message}}</p>
+  </template>
+  <script>
+    Polymer('my-element', {
+      message: "",
+      thing: {
+        color: "red"
+      },
+      observe: {
+        'thing.color': 'colorObserver',
+      },
+      colorObserver: function(oldValue, newValue) {
+        this.message = "Color changed from " + oldValue + " to " + newValue;
+      },
+      changeColor: function(e) {
+        e.preventDefault();
+        this.thing.color = this.thing.color === "red" ? "green" : "red";;
+      }
+    });
+  </script>
+</polymer-element>

@@ -30,8 +30,25 @@ htmlSuite('control flow', function() {
   htmlTest('accessing_a_large_list_of_items_in_a_template_repeat.html');
 });
 
+htmlSuite('shadow DOM', function() {
+  htmlTest('finding_shadow_dom_elements.html');
+});
+
+htmlSuite('forms', function() {
+  htmlTest('binding_to_a_checkbox.html');
+  htmlTest('binding_to_a_text_input.html');
+  htmlTest('binding_to_a_textarea.html');
+  htmlTest('implementing_simple_validation.html');
+});
+
+htmlSuite('observing changes to objects', function() {
+  htmlTest('observing_property_changes.html');
+  htmlTest('watching_for_changes_to_a_nested_object.html');
+});
+
 htmlSuite('filters', function() {
   htmlTest('using_custom_filters.html');
 });
+
 mocha.run();
 </script>
