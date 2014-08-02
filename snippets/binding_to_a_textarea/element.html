@@ -6,21 +6,21 @@ Set the default value for the model properties inside the `ready`
 callback. Use double-mustaches (`{{}}`) to display the model value.
 -->
 
-<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../../components/polymer/polymer.html">
 
 <polymer-element name="my-element">
   <template>
     <div>
-      <label for="color">Favorite color</label>
-      <input type="text" id="color" value="{{color}}">
+      <textarea placeholder="Type something" value="{{message}}">
+      </textarea>
     </div>
-    <div id="result">My favorite color is {{color}}.</div>
+    <div id="message">
+      {{message}}
+    </div>
   </template>
   <script>
     Polymer('my-element', {
-      ready: function() {
-        this.color = 'red';
-      }
+      message: ""
     });
   </script>
 </polymer-element>

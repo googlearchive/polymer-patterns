@@ -1,9 +1,9 @@
-<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../../components/polymer/polymer.html">
 
 <polymer-element name="my-element">
   <template>
-    <template repeat="{{fruit in fruits}}">
-        <div>{{fruit}}</div>
+    <template repeat="{{fruit, fruitIndex in fruits}}">
+      <div>{{fruitIndex + 1}}. {{fruit}}</div>
     </template>
   </template>
   <script>
