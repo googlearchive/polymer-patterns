@@ -1,0 +1,28 @@
+<!--
+Shows simple use of two-way data binding in a Polymer element.
+
+For Polymer elements, the model is the element itself.
+Set the default value for the model properties inside the `ready`
+callback. Use double-mustaches (`{{}}`) to display the model value.
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="fancy-pre" extends="pre" attributes="bold">
+  <template>
+  </template>
+  <script>
+    Polymer('fancy-pre', {
+      ready: function() {
+        console.log('>>>>>>>>>>>>>>');
+        console.log(this);
+      },
+      attached: function() {
+        console.log(this);
+        console.log(getDistributedNodes());
+        console.log(this.innerHTML);
+      }
+
+    });
+  </script>
+</polymer-element>

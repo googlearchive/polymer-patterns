@@ -7,6 +7,7 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
+
 <html>
 <head>
   <meta charset="utf-8">
@@ -15,19 +16,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="../components/platform/platform.js"></script>
   <link rel="import" href="../components/polymer-test-tools/tools.html">
   <script src="../components/polymer-test-tools/htmltest.js"></script>
-  <link rel="import" href="../snippets/binding_to_a_builtin_element/element.html">
+  <link rel="import" href="../snippets/binding/binding_to_a_builtin_html_element.html">
 </head>
 <body>
   <my-element></my-element>
 <script>
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
-    assert.equal(el.$.range.value, 10);
-    el.$.range.value = 20;
+    var input =el.shadowRoot.querySelector('input')
+    assert.equal(input.value, 10);
+
+    input.value = 20;
     // Needed because the binding is triggered using an on-input.
-    el.$.range.dispatchEvent(new Event('input'));
+    input.dispatchEvent(new Event('input'));
     window.setTimeout(function() {
-      assert.equal(el.shadowRoot.querySelector("#val").innerText, 20);
+      assert.equal(el.shadowRoot.querySelector("p").innerText, 20);
       done();
     }, 0);
   });
