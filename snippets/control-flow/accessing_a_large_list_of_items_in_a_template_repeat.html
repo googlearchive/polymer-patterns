@@ -1,0 +1,73 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<!--
+
+# Accessing a Large List of Items in a Template Repeat
+
+Shows how to slice an array to render small sub-arrays at a time.
+
+To make this work, first define the following properties:
+
+- `data`: the master data list
+- `renderedData`: a list of data shown in each view
+- `limit`: the number of items to render at a time
+- `offset`: index of item at the top of the rendered list
+
+Then, adjust the offset with each view, slicing `data` to refresh the
+value of `renderedData`:
+
+    Polymer('my-element', {
+      ...
+      setRenderedData: function() {
+        this.renderedData = this.data.slice(this.offset,
+            this.offset + this.limit);
+      },
+      showNext: function(e) {
+        e.preventDefault();
+        this.offset += this.limit;
+        this.setRenderedData();
+      }
+    });
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element" attributes="limit">
+  <template>
+    <template repeat="{{item in renderedData}}">
+      <div>{{item}}</div>
+    </template>
+    <hr>
+    <template if="{{offset + limit < data.length}}">
+      <button on-click="{{showNext}}">Next</button>
+    </template>
+  </template>
+  <script>
+    Polymer('my-element', {
+      offset: 0,
+      limit: 5,
+      data: ["apple", "apricot", "avocado", "banana", "blackberry",
+             "cantaloupe", "cherry", "coconut", "date", "fig", "guava",
+             "jujube", "lime", "loquat", "lychee", "mango", "quince",
+             "star fruit"],
+      ready: function() {
+        this.setRenderedData();
+      },
+      setRenderedData: function() {
+        this.renderedData = this.data.slice(this.offset,
+            this.offset + this.limit);
+      },
+      showNext: function(e) {
+        e.preventDefault();
+        this.offset += this.limit;
+        this.setRenderedData();
+      }
+    });
+  </script>
+</polymer-element>

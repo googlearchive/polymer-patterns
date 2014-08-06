@@ -1,0 +1,29 @@
+<!--
+# Binding to a Property
+
+Shows simple use of *two-way data binding* in a Polymer element.
+
+For Polymer elements, the model is the element itself, and any
+element property is available in the template. You can set the default value for
+the bound property inside the `ready` callback.
+
+You use *double-mustaches* (`{{}}`) to access the model value in the template.
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div>
+      <input type="text" value="{{color}}" placeholder="Enter favorite color">
+    </div>
+    <p>My favorite color is {{color}}.</p>
+  </template>
+  <script>
+    Polymer('my-element', {
+      ready: function() {
+        this.color = 'red';
+      }
+    });
+  </script>
+</polymer-element>
