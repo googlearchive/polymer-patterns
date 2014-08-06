@@ -16,7 +16,7 @@ htmlSuite('binding', function() {
   htmlTest('binding_to_a_property.html');
   htmlTest('binding_to_a_complex_object.html');
   htmlTest('binding_to_a_style.html');
-  htmlTest('binding_to_a_builtin_element.html');
+  htmlTest('binding_to_a_native_html_element.html');
   htmlTest('using_bind_to_create_a_single_template_instance.html');
 });
 
@@ -27,7 +27,7 @@ htmlSuite('control flow', function() {
   htmlTest('iterating_over_a_tr_or_option.html');
   htmlTest('getting_the_iteration_index.html');
   htmlTest('sorting_a_collection_for_repeating.html');
-  // htmlTest('accessing_a_large_list_of_items_in_a_template_repeat.html');
+  htmlTest('accessing_a_large_list_of_items_in_a_template_repeat.html');
 });
 
 htmlSuite('shadow DOM', function() {
@@ -44,6 +44,7 @@ htmlSuite('forms', function() {
 htmlSuite('observing changes to objects', function() {
   htmlTest('observing_property_changes.html');
   htmlTest('watching_for_changes_to_a_nested_object.html');
+  htmlTest('observing_changes_to_light_DOM_children.html');
 });
 
 htmlSuite('filters', function() {

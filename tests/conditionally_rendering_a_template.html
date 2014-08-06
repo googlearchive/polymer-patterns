@@ -10,29 +10,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
   <meta charset="utf-8">
-  <title>binding to a model</title>
+  <title>Conditionally rendering a template</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <script src="../components/platform/platform.js"></script>
   <link rel="import" href="../components/polymer-test-tools/tools.html">
   <script src="../components/polymer-test-tools/htmltest.js"></script>
 
-  <link rel="import" href="../snippets/conditionally_rendering_a_template/element.html">
+  <link rel="import" href="../snippets/control-flow/conditionally_rendering_a_template.html">
 </head>
 <body>
   <my-element></my-element>
 <script>
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
-    assert.isFalse(el.showAnswer);
-    assert.isNotNull(el.shadowRoot.querySelector('#question'));
-    assert.isNull(el.shadowRoot.querySelector('#answer'));
+    var button = el.shadowRoot.querySelector('button');
 
-    el.$.show.dispatchEvent(new Event('click'));
+    assert.isFalse(el.showAnswer);
+    assert.isNotNull(el.shadowRoot.querySelector('div'));
+    assert.isNull(el.shadowRoot.querySelector('p'));
+
+    button.dispatchEvent(new Event('click'));
 
     setTimeout(function() {
       assert.isTrue(el.showAnswer);
-      assert.isNull(el.shadowRoot.querySelector('#question'));
-      assert.isNotNull(el.shadowRoot.querySelector('#answer'));
+      assert.isNull(el.shadowRoot.querySelector('div'));
+      assert.isNotNull(el.shadowRoot.querySelector('p'));
       done();
     }, 0);
   });

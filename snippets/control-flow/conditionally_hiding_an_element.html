@@ -1,0 +1,43 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Conditionally Hiding a Template
+
+Shows use of setting the value of an element's `hidden` boolean attribute using
+`?=` syntax:
+
+    <p hidden?="{{shortView}}">{{description}}</p>
+
+Check/uncheck the checkbox to toggle the value of `shortView`. If `shortView`
+is `true`, the element is hidden; otherwise, it is displayed.
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div>
+      <label>Show short view</label>
+      <input type="checkbox" checked="{{shortView}}">
+    </div>
+    <div>{{name}}</div>
+    </div>
+    <p hidden?="{{shortView}}">{{description}}</p>
+  </template>
+  <script>
+    Polymer('my-element', {
+      shortView: true,
+      name: "The Big Lebowski",
+      description: "'Dude' Lebowski, mistaken for a millionaire Lebowski,\
+        seeks restitution for his ruined rug and enlists his \
+        bowling buddies to help get it."
+    });
+  </script>
+</polymer-element>

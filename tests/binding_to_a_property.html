@@ -15,25 +15,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="../components/platform/platform.js"></script>
   <link rel="import" href="../components/polymer-test-tools/tools.html">
   <script src="../components/polymer-test-tools/htmltest.js"></script>
-  <link rel="import" href="../snippets/binding_to_a_property/element.html">
+  <link rel="import" href="../snippets/data-binding/binding_to_a_property.html">
 </head>
 <body>
   <my-element></my-element>
 <script>
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
-    var colorInput = el.$.color;
-    var resultDiv = el.$.result;
-    assert.equal(el.color, 'red', 'did not set default value');
-    assert.equal(colorInput.value, 'red',
-        'did not bind input to color property');;
-    assert.equal(resultDiv.innerText, 'My favorite color is red.');
+    var input = el.shadowRoot.querySelector('input');
+    var p = el.shadowRoot.querySelector('p');
+    assert.equal(input.value, 'red');
+    assert.equal(p.innerText, 'My favorite color is red.');
 
-    colorInput.value = "green";
+    input.value = "green";
     // Needed because the binding is triggered using an on-input.
-    colorInput.dispatchEvent(new Event('input'));
+    input.dispatchEvent(new Event('input'));
     window.setTimeout(function() {
-      assert.equal(resultDiv.innerText, "My favorite color is green.")
+      assert.match(p.innerText, /green/)
       done();
     }, 0);
   });

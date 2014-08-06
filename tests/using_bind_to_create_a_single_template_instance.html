@@ -17,16 +17,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="import" href="../components/polymer-test-tools/tools.html">
   <script src="../components/polymer-test-tools/htmltest.js"></script>
 
-  <link rel="import" href="../snippets/using_bind_to_create_a_single_template_instance/element.html">
+  <link rel="import" href="../snippets/data-binding/using_bind_to_create_a_single_template_instance.html">
 </head>
 <body>
   <my-element></my-element>
 <script>
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
-    assert.equal(el.$.name.innerText, "Eric Bidelman");
-    assert.equal(el.$.title.innerText, "Digital Jedi");
-    assert.equal(el.$.company.innerText, "Google");
+    assert.equal(el.$.name.innerText, 'Eric Bidelman');
+    assert.equal(el.$.title.innerText, 'Digital Jedi');
+    assert.equal(el.$.company.innerText, 'Google');
     done();
   });
 </script>

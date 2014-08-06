@@ -1,0 +1,68 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Sorting a Collection for Repeating
+
+Shows use of a simple custom filter to  alphabetically sort a list while
+using iterative templates.
+
+In the sorting method, be sure to create a temporary list, and then sort and
+return it:
+
+    simpleSort: function(items) {
+      var temp = items.slice(0);
+      temp.sort(function (a, b) {
+        if (a < b)  return -1;
+        if (a > b) return 1;
+        return 0;
+      });
+      return temp;
+    }
+
+In the template, use the sorting method as a filter (using
+*pipe* (`|`) syntax) to render list items in sorted order:
+
+    <template repeat="{{fruit in fruits | simpleSort}}">
+      <div>{{fruit}}</div>
+    </template>
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div>
+      <h2>Unsorted</h2>
+      <template repeat="{{fruit in fruits}}">
+        <div>{{fruit}}</div>
+      </template>
+    </div>
+    <div>
+      <h2>Sorted</h2>
+      <template repeat="{{fruit in fruits | simpleSort}}">
+        <div>{{fruit}}</div>
+      </template>
+    </div>
+  </template>
+  <script>
+    Polymer('my-element', {
+      fruits: ["orange", "strawberry", "kiwi"],
+      simpleSort: function(items) {
+        var temp = items.slice(0);
+        temp.sort(function (a, b) {
+          if (a < b)  return -1;
+          if (a > b) return 1;
+          return 0;
+        });
+        return temp;
+      }
+    });
+  </script>
+</polymer-element>
