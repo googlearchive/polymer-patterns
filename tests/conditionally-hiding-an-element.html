@@ -10,35 +10,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
   <meta charset="utf-8">
-  <title>custom filters tests</title>
+  <title>Conditionally hiding an element</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <script src="../components/platform/platform.js"></script>
   <link rel="import" href="../components/polymer-test-tools/tools.html">
   <script src="../components/polymer-test-tools/htmltest.js"></script>
-  <link rel="import" href="../snippets/filters/using_custom_filters.html">
+  <link rel="import" href="../snippets/control-flow/conditionally-hiding-an-element.html">
 </head>
 <body>
   <my-element></my-element>
 <script>
-document.addEventListener('polymer-ready', function() {
-  var el = document.querySelector('my-element');
-  var root = el.shadowRoot;
+  document.addEventListener('polymer-ready', function() {
+    var el = document.querySelector('my-element');
+    var p = el.shadowRoot.querySelector('p');
 
-  assert.equal(
-      root.querySelector('#toUpperCase').textContent, 'HOW NOW BROWN COW',
-      'toUpperCase filter did not return correct results');
+    assert.isTrue(el.shortView);
+    assert.isTrue(p.hidden);
 
-  assert.equal(
-      root.querySelector('#chaining').textContent, 'DENIAHC EB NAC SRETLIF',
-      'chained filters did not return correct results');
-
-  assert.equal(
-      root.querySelector('#toFixed').textContent, 10.12,
-      'toFixed filter did not trim number');
-
-  done();
-
-});
+    el.shortView = false;
+    window.setTimeout(function() {
+      assert.isFalse(p.hidden);
+      done();
+    }, 0);
+  });
 </script>
 </body>
 </html>
