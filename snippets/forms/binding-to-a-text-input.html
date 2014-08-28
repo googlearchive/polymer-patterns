@@ -1,0 +1,35 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Binding to a Text Input
+
+Shows the use of data binding using a text input.
+
+To create a two-way binding, bind an element property to the `<input>`'s `value`
+attribute:
+
+    <input type="text" value="{{message}}" ...>
+
+[jsbin](http://jsbin.com/giray/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <input type="text" value="{{message}}" placeholder="Type something">
+    <div id="message">{{message}}</div>
+  </template>
+  <script>
+    Polymer({
+      message: ''
+    });
+  </script>
+</polymer-element>

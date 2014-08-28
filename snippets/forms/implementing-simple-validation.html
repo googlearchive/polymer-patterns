@@ -1,0 +1,89 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Implementing Simple Validation
+
+Shows how to perform  simple validation on a form field, and display
+an error message as the user interacts with the field widget.
+
+First, bind the value of form field to a Polymer element property:
+
+    <input type="text" value="{{message}}" placeholder="Type something">
+
+Define a variable to store the validation error message:
+
+    Polymer('my-element', {
+      ...
+      messageValidationError: "",
+      ...
+    });
+
+    Then, use a **propertyChange watcher** to fire a validation callback every
+    time the element property bound to the form field changes:
+
+    Polymer('my-element', {
+      ...
+      minLength: 5,
+      maxLength: 50,
+      messageChanged: function() {
+        var trimmedMessage = this.message.trim();
+        if (trimmedMessage.length < this.minLength ||
+            trimmedMessage.length > this.maxLength) {
+              this.messageValidationError = "Must be between " +
+                                  this.minLength + " and " +
+                                  this.maxLength + " characters.";
+        } else {
+          this.messageValidationError = "";
+        }
+      }
+    });
+
+In the callback, set the value of the validation error message as needed.
+
+This example shows min and max length validation for a text `<input>`
+field. There is no validation error message at first, but as the user types
+into the field, the value of the bound `message` variable changes. This
+triggers the `messageChanged()` callback, which sets the validation error
+message.
+
+Read the
+[official documentation for changed watchers](http://www.polymer-project.org/docs/polymer/polymer.html#change-watchers).
+
+[jsbin](http://jsbin.com/sekag/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div>{{messageValidationError}}</div>
+    <input type="text" value="{{message}}" placeholder="Type something">
+    <div id="message">{{message}}</div>
+  </template>
+  <script>
+    Polymer({
+      message: '',
+      messageValidationError: '',
+      minLength: 5,
+      maxLength: 50,
+      messageChanged: function() {
+        var trimmedMessage = this.message.trim();
+        if (trimmedMessage.length < this.minLength ||
+            trimmedMessage.length > this.maxLength) {
+              this.messageValidationError = 'Must be between ' +
+                                  this.minLength + ' and ' +
+                                  this.maxLength + ' characters.';
+        } else {
+          this.messageValidationError = '';
+        }
+      }
+    });
+  </script>
+</polymer-element>

@@ -20,5 +20,13 @@ htmlSuite('control flow', function() {
 htmlSuite('filters', function() {
   htmlTest('using-custom-filters.html');
 });
+
+htmlSuite('forms', function() {
+  htmlTest('binding-a-boolean-property-to-a-checkbox.html');
+  htmlTest('binding-to-a-text-input.html');
+  htmlTest('binding-to-a-textarea.html');
+  htmlTest('implementing-simple-validation.html');
+});
+
 mocha.run();
 </script>
