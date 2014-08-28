@@ -33,8 +33,9 @@ Define a variable to store the validation error message:
       minLength: 5,
       maxLength: 50,
       messageChanged: function() {
-        if (this.message.trim().length < this.minLength ||
-            this.message.trim().length > this.maxLength) {
+        var trimmedMessage = this.message.trim();
+        if (trimmedMessage.length < this.minLength ||
+            trimmedMessage.length > this.maxLength) {
               this.messageValidationError = "Must be between " +
                                   this.minLength + " and " +
                                   this.maxLength + " characters.";
@@ -73,8 +74,9 @@ Read the
       minLength: 5,
       maxLength: 50,
       messageChanged: function() {
-        if (this.message.trim().length < this.minLength ||
-            this.message.trim().length > this.maxLength) {
+        var trimmedMessage = this.message.trim();
+        if (trimmedMessage.length < this.minLength ||
+            trimmedMessage.length > this.maxLength) {
               this.messageValidationError = 'Must be between ' +
                                   this.minLength + ' and ' +
                                   this.maxLength + ' characters.';
