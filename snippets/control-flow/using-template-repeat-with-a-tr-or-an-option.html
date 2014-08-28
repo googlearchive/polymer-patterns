@@ -1,0 +1,50 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Using Template Repeat with a Table Row or an Option
+
+Because `<template>` tags are not allowed within `<table>` and `<select>`
+elements in legacy browsers, use **template repeat** with `<tr>`s and
+`<option>`s as shown below:
+
+    <tr template repeat="{{fruit in fruits}}">
+      ...
+    </tr>
+
+    ...
+    <option template repeat="{{fruit in fruits}}">{{fruit}}</option>
+
+
+For browsers that do support the `<template>` tag, you can use `repeat` the
+traditional way. For more details, see the
+[official Polymer documentation](http://www.polymer-project.org/resources/faq.html#option-tr).
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <table>
+      <tr template repeat="{{fruit in fruits}}">
+        <td>{{fruit}}</td>
+      </tr>
+    </table>
+    <select>
+      <option template repeat="{{fruit in fruits}}">{{fruit}}</option>
+    </select>
+  </template>
+  <script>
+    Polymer({
+      created: function() {
+        this.fruits = ['orange', 'strawberry', 'banana'];
+      }
+    });
+  </script>
+</polymer-element>
