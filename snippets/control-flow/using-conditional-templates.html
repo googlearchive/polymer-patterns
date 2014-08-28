@@ -1,0 +1,57 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Using Conditional Templates
+
+Shows the use of a conditional template using **if=** syntax:
+
+    <template if="{{showAnswer}}">
+      ...
+    </template>
+
+The template renders only if the value it is bound to is truthy.
+
+Polymer has no `else` clause. Use a negative condition instead:
+
+    <template if="{{!showAnswer}}">
+      ...
+    </template>
+
+Read the
+[official documentation for conditional templates](http://www.polymer-project.org/docs/polymer/binding-types.html#conditional-templates).
+
+[jsbin](http://jsbin.com/wigala/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <template if="{{showAnswer}}">
+      <div>42</div>
+      <button on-tap="{{toggleView}}">Show question</button>
+    </template>
+    <template if="{{!showAnswer}}">
+      <div>
+        What is the answer to "The Ultimate Question of Life, the
+        Universe, and Everything"?
+      </div>
+      <button on-tap="{{toggleView}}">Show answer</button>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      showAnswer: false,
+      toggleView: function(e, detail, sender) {
+        this.showAnswer = !this.showAnswer;
+      }
+    });
+  </script>
+</polymer-element>

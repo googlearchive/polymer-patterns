@@ -12,9 +12,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script>
 mocha.setup({ui: 'tdd', slow: 1000, timeout: 5000, htmlbase: ''});
 
-htmlSuite('customfilters', function() {
-  htmlTest('customfilters.html');
+htmlSuite('control flow', function() {
+  htmlTest('using-conditional-templates.html');
+  htmlTest('conditionally-hiding-an-element.html');
 });
 
+htmlSuite('filters', function() {
+  htmlTest('using-custom-filters.html');
+});
 mocha.run();
 </script>

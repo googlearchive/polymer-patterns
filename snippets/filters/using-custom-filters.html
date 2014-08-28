@@ -1,0 +1,54 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Using Custom Filters
+
+Shows how you can define and use functions to filter template content.
+
+All filter functions take at least one paramter, the value to be filtered. They
+can take additional paramters (see `toFixed()`, below).
+
+To specify a filter in the template, use the **pipe** (`|`) operator inside a
+**double mustache** (`{{}}`) block:
+
+    <template>
+      ...
+      <div id="toUpperCase">{{'How now brown cow' | toUpperCase}}</div>
+      ...
+    </template>
+
+Read the
+[official documentation for custom filters](http://www.polymer-project.org/docs/polymer/expressions.html#custom-filters).
+
+[]jsbin](http://jsbin.com/xilaq/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div id="toFixed">{{10.123456789 | toFixed(2)}}</div>
+    <div id="toUpperCase">{{'How now brown cow' | toUpperCase}}</div>
+    <div id="chaining">{{'Filters can be chained' | reverse | toUpperCase}}</div>
+  </template>
+  <script>
+    Polymer({
+      toFixed: function(value, precision) {
+        return Number(value).toFixed(precision);
+      },
+      toUpperCase: function(value) {
+        return value.toUpperCase();
+      },
+      reverse: function(value) {
+        return value.split('').reverse().join('');
+      }
+    });
+  </script>
+</polymer-element>
