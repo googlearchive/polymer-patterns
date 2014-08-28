@@ -1,0 +1,35 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Binding to a Textarea
+
+Shows the use of data binding using a `<textarea>`.
+
+To create a two-way binding, bind an element property to the `<textarea>`'s
+`value` attribute:
+
+    <textarea value="{{message}}" ... > </textarea>
+
+[jsbin](http://jsbin.com/joseyo/1/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+      <textarea value="{{message}}" placeholder="Type something"> </textarea>
+      <div id="message">{{message}}</div>
+  </template>
+  <script>
+    Polymer({
+      message: ''
+    });
+  </script>
+</polymer-element>
