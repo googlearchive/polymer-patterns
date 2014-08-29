@@ -26,11 +26,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     assert.equal(el.message, '');
 
     var newDiv = document.createElement('div');
-    newDiv.innerText = 'x';
+    newDiv.textContent = 'x';
     el.appendChild(newDiv);
     window.setTimeout(function() {
       assert.equal(el.children.length, 1);
-      assert.match(el.children[0].innerText, /x/)
+      assert.match(el.children[0].textContent, /x/)
       done();
     }, 0);
   });

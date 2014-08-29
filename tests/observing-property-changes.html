@@ -24,12 +24,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var el = document.querySelector('my-element');
     var div = el.shadowRoot.querySelector('div');
     var p = el.shadowRoot.querySelector('p');
-    assert.equal(div.innerText, 'red');
-    assert.equal(p.innerText, '');
-    el.shadowRoot.querySelector('button').dispatchEvent(new Event('click'));
+    assert.equal(div.textContent, 'red');
+    assert.equal(p.textContent, '');
+    el.shadowRoot.querySelector('button').dispatchEvent(new Event('tap'));
     window.setTimeout(function() {
-      assert.equal(div.innerText, 'green');
-      assert.match(p.innerText, /red to green/);
+      assert.equal(div.textContent, 'green');
+      assert.match(p.textContent, /red to green/);
       done();
     }, 0);
   });

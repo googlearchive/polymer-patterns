@@ -22,17 +22,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script>
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
-    assert.equal(el.shadowRoot.querySelector('div').innerText, 'red');
-    console.log(el.shadowRoot.querySelector('p'));
-    assert.equal(el.shadowRoot.querySelector('p').innerText, '');
+    assert.equal(el.shadowRoot.querySelector('div').textContent, 'red');
+    assert.equal(el.shadowRoot.querySelector('p').textContent, '');
 
-    el.shadowRoot.querySelector('button').dispatchEvent(new Event('click'));
+    el.shadowRoot.querySelector('button').dispatchEvent(new Event('tap'));
     setTimeout(function() {
-      assert.equal(el.shadowRoot.querySelector('div').innerText, 'green');
-      assert.match(el.shadowRoot.querySelector('p').innerText,
+      assert.equal(el.shadowRoot.querySelector('div').textContent, 'green');
+      assert.match(el.shadowRoot.querySelector('p').textContent,
           /from red to green/);
+      done();
     }, 0);
-    done();
   });
 </script>
 </body>

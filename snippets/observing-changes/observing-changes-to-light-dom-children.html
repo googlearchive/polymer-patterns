@@ -25,7 +25,7 @@ arguments.
       },
       childrenUpdated: function(observer, mutations) {
         this.message = "New <div> with text '" +
-                  mutations[0].addedNodes[0].innerHTML +
+                  mutations[0].addedNodes[0].textContent +
                   "' added to light DOM.";
         // Monitor again.
         this.onMutation(this, this.childrenUpdated);
@@ -33,19 +33,21 @@ arguments.
       ...
     });
 
-In this example, the user clicks on a `<button>` to add a `<div>` to the
+In this example, the user taps on a `<button>` to add a `<div>` to the
 element's light DOM. Adding a node triggers the mutation observer. Note
 the use of a **MutationRecord** to get information about the newly appended
 light DOM node:
 
     childrenUpdated: function(observer, mutations) {
         ...
-        mutations[0].addedNodes[0].innerHTML
+        mutations[0].addedNodes[0].textContent
         ...
     }
 
 Read the
-[official documentation for Mutation Observers and the onMutation callback](http://www.polymer-project.org/resources/faq.html#mutationlightdom).
+[official documentation for Mutation Observer and the onMutation callback](http://www.polymer-project.org/resources/faq.html#mutationlightdom).
+Read the
+[MDN documentation for Mutation Observer](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
 
 [jsbin](http://jsbin.com/wifiyo/edit)
 -->
@@ -55,7 +57,7 @@ Read the
 <polymer-element name="my-element">
   <template>
     <div>{{message}}</div>
-     <button on-click="{{addDivToLightDom}}">Add div to light DOM</button>
+     <button on-tap="{{addDivToLightDom}}">Add div to light DOM</button>
     <content></content>
   </template>
   <script>
@@ -67,14 +69,14 @@ Read the
       },
       childrenUpdated: function(observer, mutations) {
         this.message = "New <div> with text '" +
-          mutations[0].addedNodes[0].innerHTML +
+          mutations[0].addedNodes[0].textContent +
           "' added to light DOM.";
         // Monitor again.
         this.onMutation(this, this.childrenUpdated);
       },
       addDivToLightDom: function(e) {
         var newDiv = document.createElement('div');
-        newDiv.innerText = 'I am new';
+        newDiv.textContent = 'I am new';
         this.appendChild(newDiv);
       }
     });
