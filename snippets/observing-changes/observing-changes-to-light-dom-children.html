@@ -1,0 +1,84 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Observing Changes to Light DOM Children
+
+Shows how to use a **MutationObserver** to be notified when nodes are
+added to or removed from the light DOM.
+
+Polymer adds an **onMutation()** callback to every element. The callback takes
+two arguments, a DOM element to observe, and a callback that takes the
+MutationObserver object and the list of **MutationRecord** objects as
+arguments.
+
+    Polymer('my-element', {
+      message: '',
+      ready: function() {
+        this.onMutation(this, this.childrenUpdated);
+      },
+      childrenUpdated: function(observer, mutations) {
+        this.message = "New <div> with text '" +
+                  mutations[0].addedNodes[0].textContent +
+                  "' added to light DOM.";
+        // Monitor again.
+        this.onMutation(this, this.childrenUpdated);
+      },
+      ...
+    });
+
+In this example, the user taps on a `<button>` to add a `<div>` to the
+element's light DOM. Adding a node triggers the mutation observer. Note
+the use of a **MutationRecord** to get information about the newly appended
+light DOM node:
+
+    childrenUpdated: function(observer, mutations) {
+        ...
+        mutations[0].addedNodes[0].textContent
+        ...
+    }
+
+Read the
+[official documentation for Mutation Observer and the onMutation callback](http://www.polymer-project.org/resources/faq.html#mutationlightdom).
+Read the
+[MDN documentation for Mutation Observer](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
+
+[jsbin](http://jsbin.com/wifiyo/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div>{{message}}</div>
+     <button on-tap="{{addDivToLightDom}}">Add div to light DOM</button>
+    <content></content>
+  </template>
+  <script>
+    Polymer({
+      message: '',
+      ready: function() {
+        // Observe a single change.
+        this.onMutation(this, this.childrenUpdated);
+      },
+      childrenUpdated: function(observer, mutations) {
+        this.message = "New <div> with text '" +
+          mutations[0].addedNodes[0].textContent +
+          "' added to light DOM.";
+        // Monitor again.
+        this.onMutation(this, this.childrenUpdated);
+      },
+      addDivToLightDom: function(e) {
+        var newDiv = document.createElement('div');
+        newDiv.textContent = 'I am new';
+        this.appendChild(newDiv);
+      }
+    });
+  </script>
+</polymer-element>

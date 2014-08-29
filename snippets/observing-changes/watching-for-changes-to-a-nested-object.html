@@ -1,0 +1,75 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Watching for Changes to a Nested Object
+
+Shows how to use an **observe block** for observing a nested property
+for changes.
+
+An observe block defines a mapping between one or
+more properties and an observer,
+and it should be used for watching changes to nested objects.
+
+In this sample, the the `thing.color` property is mapped to a handler
+inside an `observe` block:
+
+    Polymer('my-element', {
+      message: '',
+      created: function() {
+        this.thing = {
+          color: 'red'
+        };
+      },
+      observe: {
+        'thing.color': 'colorObserver',
+      },
+      colorObserver: function(oldValue, newValue) {
+        this.message = 'Color changed from ' + oldValue + ' to ' + newValue;
+      },
+      ...
+    });
+
+Every time the value of `thing.color` changes, the `colorObserver()` handler
+fires.
+
+Read the
+[official documentation for observe blocks](http://www.polymer-project.org/docs/polymer/polymer.html#observeblock).
+
+[jsbin](http://jsbin.com/wifiyo/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div>{{thing.color}}</div>
+    <button on-tap="{{changeColor}}">Change color</button>
+    <p>{{message}}</p>
+  </template>
+  <script>
+    Polymer({
+      message: '',
+      created: function() {
+        this.thing = {
+          color: 'red'
+        };
+      },
+      observe: {
+        'thing.color': 'colorObserver',
+      },
+      colorObserver: function(oldValue, newValue) {
+        this.message = 'Color changed from ' + oldValue + ' to ' + newValue;
+      },
+      changeColor: function(e) {
+        this.thing.color = this.thing.color === 'red' ? 'green' : 'red';
+      }
+    });
+  </script>
+</polymer-element>

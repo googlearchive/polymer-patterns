@@ -1,0 +1,63 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Observing Property Changes
+
+Shows how you can observe changes to a Polymer element property using
+a **propertyChanged watcher**.
+
+For every element property, Polymer automatically makes available a
+handler that fires when the property changes. The name of the
+handler is made up by combining the name of the property with the
+"Changed" suffix.
+
+In this example, changes to the `color` property are observed in the
+`colorChanged()` hander:
+
+    Polymer('my-element', {
+      message: '',
+      color: 'red',
+      colorChanged: function(oldValue, newValue) {
+        this.message = 'Color changed from ' + oldValue + ' to ' + newValue;
+      },
+      ...
+    });
+
+When the value of `color` changes, `colorChanged`  automatically fires.
+Both the old and the current values of `color` are available inside
+the propertyChanged watcher.
+
+Read the
+[official documentation for changed watchers](http://www.polymer-project.org/docs/polymer/polymer.html#change-watchers).
+
+[jsbin](http://jsbin.com/veboga/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div>{{color}}</div>
+    <button on-tap="{{toggleColor}}">Change color</button>
+    <p>{{message}}</p>
+  </template>
+  <script>
+    Polymer({
+      message: '',
+      color: 'red',
+      colorChanged: function(oldValue, newValue) {
+        this.message = 'Color changed from ' + oldValue + ' to ' + newValue;
+      },
+      toggleColor: function(e) {
+        this.color = this.color === 'red' ? 'green' : 'red';
+      }
+    });
+  </script>
+</polymer-element>

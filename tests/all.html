@@ -28,5 +28,11 @@ htmlSuite('forms', function() {
   htmlTest('implementing-simple-validation.html');
 });
 
+htmlSuite('observing changes', function() {
+  htmlTest('observing-changes-to-light-dom-children.html');
+  htmlTest('observing-property-changes.html');
+  htmlTest('watching-for-changes-to-a-nested-object.html');
+});
+
 mocha.run();
 </script>
