@@ -1,0 +1,38 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Binding to a Property
+
+Shows simple use of **data binding** in a Polymer element.
+
+For Polymer elements, the model is the element itself, and any
+element property is available in the template within **double mustaches**
+(`{{}}`).
+
+See
+[binding-to-a-text-input.html](../forms/binding-to-a-text-input.html)
+for a version of this snippet where the `color` property can be modified
+using a text `<input>`, resulting in **two-way data binding**.
+
+[jsbin](http://jsbin.com/zunagu/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <p>My favorite color is {{color}}.</p>
+  </template>
+  <script>
+    Polymer({
+      color: 'red'
+    });
+  </script>
+</polymer-element>
