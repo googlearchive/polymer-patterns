@@ -1,0 +1,43 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Adding Button Rows
+
+The `core-toolbar` element implicitly uses flexbox to lay out its children from
+left to right. One common (and somewhat lazy) trick is to use a `<span>` with a
+`flex` attribute to act as a spacer between buttons. Combine this trick with the
+`core-toolbar` sizing options to make interesting navbars:
+
+    <core-toolbar class="medium-tall">
+      <core-icon-button icon="menu"></core-icon-button>
+      <span flex></span>
+      <core-icon-button icon="search"></core-icon-button>
+      <core-icon-button icon="more-vert"></core-icon-button>
+      <div class="bottom indent">My App</div>
+    </core-toolbar>
+
+Read the
+[official documentation for core-toolbar]
+(http://www.polymer-project.org/docs/elements/core-elements.html#core-toolbar).
+
+[jsbin](http://jsbin.com/lotayo/edit)
+-->
+
+<link rel="import" href="../../../components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../../../components/core-icons/core-icons.html">
+<link rel="import" href="../../../components/core-icon-button/core-icon-button.html">
+
+<core-toolbar class="medium-tall">
+  <core-icon-button icon="menu"></core-icon-button>
+  <span flex></span>
+  <core-icon-button icon="search"></core-icon-button>
+  <core-icon-button icon="more-vert"></core-icon-button>
+  <div class="bottom indent">My App</div>
+</core-toolbar>
