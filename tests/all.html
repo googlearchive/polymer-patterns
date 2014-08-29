@@ -10,23 +10,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script src="../components/polymer-test-tools/mocha-htmltest.js"></script>
 
 <script>
-mocha.setup({ui: 'tdd', slow: 1000, timeout: 5000, htmlbase: ''});
+  mocha.setup({ui: 'tdd', slow: 1000, timeout: 5000, htmlbase: ''});
 
-htmlSuite('control flow', function() {
-  htmlTest('using-conditional-templates.html');
-  htmlTest('conditionally-hiding-an-element.html');
-});
+  htmlSuite('control flow', function() {
+    htmlTest('using-conditional-templates.html');
+    htmlTest('conditionally-hiding-an-element.html');
+    htmlTest('getting-the-iteration-index-when-looping-over-a-collection.html');
+    htmlTest('looping-over-a-collection-using-iterative-templates.html');
+    htmlTest('using-template-repeat-with-a-tr-or-an-option.html');
+  });
 
-htmlSuite('filters', function() {
-  htmlTest('using-custom-filters.html');
-});
+  htmlSuite('filters', function() {
+    htmlTest('using-custom-filters.html');
+  });
 
-htmlSuite('forms', function() {
-  htmlTest('binding-a-boolean-property-to-a-checkbox.html');
-  htmlTest('binding-to-a-text-input.html');
-  htmlTest('binding-to-a-textarea.html');
-  htmlTest('implementing-simple-validation.html');
-});
+  htmlSuite('forms', function() {
+    htmlTest('binding-a-boolean-property-to-a-checkbox.html');
+    htmlTest('binding-to-a-text-input.html');
+    htmlTest('binding-to-a-textarea.html');
+    htmlTest('implementing-simple-validation.html');
+  });
 
-mocha.run();
+  mocha.run();
 </script>
