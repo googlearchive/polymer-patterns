@@ -25,8 +25,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     el.fruits = ['x', 'y'];
     setTimeout(function() {
       var divs = el.shadowRoot.querySelectorAll('div');
-      assert.equal(divs[0].innerText, '1. x');
-      assert.equal(divs[1].innerText, '2. y');
+      assert.equal(divs[0].textContent, '1. x');
+      assert.equal(divs[1].textContent, '2. y');
       done();
     });
   });

@@ -22,9 +22,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script>
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
-    var divs = el.shadowRoot.querySelectorAll('div');
-    assert.equal(divs.length, el.fruits.length);
-    done();
+    el.fruits = ['x', 'y'];
+    setTimeout(function() {
+      var divs = el.shadowRoot.querySelectorAll('div');
+      assert.equal(divs.length, el.fruits.length);
+      assert.equal(divs[0].textContent.trim(), 'x');
+      assert.equal(divs[1].textContent.trim(), 'y');
+      done();
+    });
   });
 </script>
 </body>
