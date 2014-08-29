@@ -1,0 +1,34 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Adding a menu button to core-toolbar
+
+Shows how to compose the **core-icon-button** element, inside of a **core-toolbar**.
+
+The `core-icon-button` is a simple button container which can be configured to display an icon. It can be nested inside of a `core-toolbar` to display a menu button icon. 
+
+    <core-toolbar>
+      <core-icon-button icon="menu"></core-icon-button>
+      <div>My App</div>
+    </core-toolbar>
+
+To use the menu icon from Polymer's default icon set, you will need to include an import for `core-icons`, as well as the import for `core-icon-button`.
+
+[jsbin](http://jsbin.com/nigobo/edit)
+-->
+
+<link rel="import" href="../../../components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../../../components/core-icons/core-icons.html">
+<link rel="import" href="../../../components/core-icon-button/core-icon-button.html">
+
+<core-toolbar>
+  <core-icon-button icon="menu"></core-icon-button>
+  <div>My App</div>
+</core-toolbar>
