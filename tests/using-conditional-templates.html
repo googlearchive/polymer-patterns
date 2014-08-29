@@ -25,13 +25,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var el = document.querySelector('my-element');
     var button = el.shadowRoot.querySelector('button');
     assert.isFalse(el.showAnswer);
-    assert.match(el.shadowRoot.querySelector('div').innerText,
+    assert.match(el.shadowRoot.querySelector('div').textContent,
         /Ultimate Question/);
 
     button.dispatchEvent(new Event('tap'));
     setTimeout(function() {
       assert.isTrue(el.showAnswer);
-      assert.match(el.shadowRoot.querySelector('div').innerText, /42/);
+      assert.match(el.shadowRoot.querySelector('div').textContent, /42/);
       done();
     }, 0);
   });

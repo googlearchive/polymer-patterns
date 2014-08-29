@@ -24,11 +24,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var el = document.querySelector('my-element');
     var label = el.shadowRoot.querySelector('label');
     assert.isFalse(el.checked);
-    assert.equal(label.innerText.trim(), 'Check');
+    assert.equal(label.textContent.trim(), 'Check');
 
     el.checked = true;
     window.setTimeout(function() {
-      assert.equal(label.innerText.trim(), 'Uncheck');
+      assert.equal(label.textContent.trim(), 'Uncheck');
       done();
     }, 0);
   });
