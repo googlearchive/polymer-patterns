@@ -1,0 +1,45 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Getting the Iteration Index in a Template Repeat
+
+Shows how to get the iteration index when using iterative templates to
+render list items:
+
+    <template repeat="{{fruit, i in fruits}}">
+      ...
+    </template>
+
+You can use the iteration index like any other variable using double mustache
+(`{{}}`) syntax:
+
+    <template repeat="{{fruit, i in fruits}}">
+      <div>{{i + 1}}. {{fruit}}</div>
+    </template>
+
+[jsbin](http://jsbin.com/payoq/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <template repeat="{{fruit, i in fruits}}">
+      <div>{{i + 1}}. {{fruit}}</div>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      created: function() {
+        this.fruits = ['apple', 'banana', 'fig', 'kiwi', 'guava'];
+      }
+    });
+  </script>
+</polymer-element>
