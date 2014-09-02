@@ -26,13 +26,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var input = el.shadowRoot.querySelector('input')
     var p = el.shadowRoot.querySelector('p')
     assert.equal(input.value, 10);
-    assert.equal(p.innerText, 10);
+    assert.equal(p.textContent, 10);
 
     input.value = 20;
     // Needed because the binding is triggered using an on-input.
     input.dispatchEvent(new Event('input'));
     window.setTimeout(function() {
-      assert.equal(p.innerText, 20);
+      assert.equal(p.textContent, 20);
       done();
     }, 0);
   });

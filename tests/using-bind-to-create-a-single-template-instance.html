@@ -25,9 +25,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
     var divs = el.shadowRoot.querySelectorAll('div');
-    assert.equal(divs[0].innerText, 'Eric Bidelman');
-    assert.equal(divs[1].innerText, 'Digital Jedi');
-    assert.equal(divs[2].innerText, 'Google');
+    assert.equal(divs[0].textContent, 'Eric Bidelman');
+    assert.equal(divs[1].textContent, 'Digital Jedi');
+    assert.equal(divs[2].textContent, 'Google');
     done();
   });
 </script>

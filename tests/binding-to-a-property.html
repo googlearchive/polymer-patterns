@@ -23,10 +23,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
     var p = el.shadowRoot.querySelector('p');
-    assert.match(p.innerText, /red/)
+    assert.match(p.textContent, /red/)
     el.color = 'green';
     window.setTimeout(function() {
-      assert.match(p.innerText, /green/)
+      assert.match(p.textContent, /green/)
       done();
     }, 0);
   });
