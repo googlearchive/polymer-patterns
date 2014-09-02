@@ -45,5 +45,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     htmlTest('watching-for-changes-to-a-nested-object.html');
   });
 
+  htmlSuite('core-elements/core-toolbar', function() {
+    htmlTest('core-elements/core-toolbar/using-core-toolbar.html');
+    htmlTest('core-elements/core-toolbar/changing-toolbar-size.html');
+    htmlTest('core-elements/core-toolbar/adding-a-menu-button.html');
+    htmlTest('core-elements/core-toolbar/adding-button-rows.html');
+  });
+
   mocha.run();
 </script>
