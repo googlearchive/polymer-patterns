@@ -1,0 +1,99 @@
+<!doctype html>
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Using Custom Events
+
+Shows use of a custom event to communicate between a child and a parent
+Polymer element.
+
+Polymer core provides a `fire()` method for sending custom events. This
+method wraps `node.dispatchEvent(new CustomEvent(...))`. The method takes two
+arguments, the name of the custom event and the data passed along with the
+event:
+
+    <polymer-element name="child-element">
+      ...
+      <script>
+        Polymer({
+          ...
+            this.fire('spoken', this.shadowRoot.querySelector('input').value);
+          ...
+        });
+      </script>
+    </polymer-element>
+
+
+When communicating between Polymer events using custom events, use an
+`on-*` handler to deal with the event. In this example, the `spoken` custom
+event is handled using `on-spoken` and the `heard()` handler:
+
+    <polymer-element name="parent-element">
+      <template>
+        <div on-spoken="{{heard}}">
+          <child-element></child-element>
+        </div>
+      </template>
+      <script>
+        Polymer('parent-element', {
+          heard: function(e, detail, sender) {
+            var div = document.createElement('div');
+            div.textContent = 'heard: ' + detail;
+            sender.appendChild(div);
+          }
+        });
+      </script>
+    </polymer-element>
+
+
+The handler has access to the following:
+
+- the event object
+- the data passed along with the event
+- the node that sent the event
+
+Read the
+[official documentations for the fire() method](http://www.polymer-project.org/docs/polymer/polymer.html#fire).
+
+[jsbin](http://jsbin.com/pobipa/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="child-element">
+  <template>
+    <input type="text" placeholder="Write something">
+    <button on-tap="{{fireEvent}}">Fire custom event</button>
+  </template>
+  <script>
+    Polymer('child-element', {
+      fireEvent: function(e, detail, sender) {
+        this.fire('spoken', this.shadowRoot.querySelector('input').value);
+      }
+    });
+  </script>
+</polymer-element>
+
+<polymer-element name="parent-element">
+  <template>
+    <div on-spoken="{{heard}}">
+      <child-element></child-element>
+    </div>
+  </template>
+  <script>
+    Polymer('parent-element', {
+      heard: function(e, detail, sender) {
+        var div = document.createElement('div');
+        div.textContent = 'heard: ' + detail;
+        sender.appendChild(div);
+      }
+    });
+  </script>
+</polymer-element>
