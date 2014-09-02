@@ -25,18 +25,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       var child = parent.shadowRoot.querySelector('child-element');
       var input = child.shadowRoot.querySelector('input');
       var button = child.shadowRoot.querySelector('button');
-      var divs = parent.shadowRoot.querySelectorAll('div');
-      assert.equal(divs.length, 1);
       assert.equal(input.value, '');
+      assert.equal(parent.message, '');
 
       // Add data to the input and fire the custom event.
       input.value = 'x';
       button.dispatchEvent(new Event('tap'));
 
       window.setTimeout(function() {
-        divs = parent.shadowRoot.querySelectorAll('div');
-        assert.equal(divs.length, 2);
-        assert.match(divs[1].textContent, /x/);
+        assert.match(parent.message, /x/);
         done();
       }, 0);
     });

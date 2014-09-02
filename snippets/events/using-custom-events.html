@@ -11,8 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!--
 # Using Custom Events
 
-Shows use of a custom event to communicate between a child and a parent
-Polymer element.
+Shows use of a custom event to communicate between a child and a parent element.
 
 Polymer core provides a `fire()` method for sending custom events. This
 method wraps `node.dispatchEvent(new CustomEvent(...))`. The method takes two
@@ -24,14 +23,14 @@ event:
       <script>
         Polymer({
           ...
-            this.fire('spoken', this.shadowRoot.querySelector('input').value);
+            this.fire('spoken', {message: message});
           ...
         });
       </script>
     </polymer-element>
 
 
-When communicating between Polymer events using custom events, use an
+When communicating between Polymer elements using a custom event, use an
 `on-*` handler to deal with the event. In this example, the `spoken` custom
 event is handled using `on-spoken` and the `heard()` handler:
 
@@ -43,10 +42,9 @@ event is handled using `on-spoken` and the `heard()` handler:
       </template>
       <script>
         Polymer('parent-element', {
+          message: '',
           heard: function(e, detail, sender) {
-            var div = document.createElement('div');
-            div.textContent = 'heard: ' + detail;
-            sender.appendChild(div);
+            this.message = 'heard: ' + detail.message;
           }
         });
       </script>
@@ -56,11 +54,11 @@ event is handled using `on-spoken` and the `heard()` handler:
 The handler has access to the following:
 
 - the event object
-- the data passed along with the event
+- a `detail` object to pass data along with the event
 - the node that sent the event
 
 Read the
-[official documentations for the fire() method](http://www.polymer-project.org/docs/polymer/polymer.html#fire).
+[official documentations for `fire()`](http://www.polymer-project.org/docs/polymer/polymer.html#fire).
 
 [jsbin](http://jsbin.com/pobipa/edit)
 -->
@@ -75,7 +73,8 @@ Read the
   <script>
     Polymer('child-element', {
       fireEvent: function(e, detail, sender) {
-        this.fire('spoken', this.shadowRoot.querySelector('input').value);
+        var message = this.shadowRoot.querySelector('input').value;
+        this.fire('spoken', {message: message});
       }
     });
   </script>
@@ -85,14 +84,14 @@ Read the
   <template>
     <div on-spoken="{{heard}}">
       <child-element></child-element>
+      <div>{{message}}</div>
     </div>
   </template>
   <script>
     Polymer('parent-element', {
+      message: '',
       heard: function(e, detail, sender) {
-        var div = document.createElement('div');
-        div.textContent = 'heard: ' + detail;
-        sender.appendChild(div);
+        this.message = 'heard: ' + detail.message;
       }
     });
   </script>
