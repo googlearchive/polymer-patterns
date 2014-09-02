@@ -1,0 +1,39 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Binding to a Style
+
+Shows use of data binding to set an element's inline style.
+
+In this example, as the value of `color` changes,
+the value of `<p>`'s 'color' inline style updates.
+
+Read
+[A Guide to Styling Elements](http://www.polymer-project.org/articles/styling-elements.html).
+
+[jsbin](http://jsbin.com/gelos/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <p>My favorite color is <span style="color:{{color}}">{{color}}</span>.</p>
+    <button on-tap="{{toggleColor}}">Toogle color</button>
+  </template>
+  <script>
+    Polymer({
+      color: 'red',
+      toggleColor: function() {
+        this.color = this.color === 'red' ? 'green' : 'red';
+      }
+    });
+  </script>
+</polymer-element>

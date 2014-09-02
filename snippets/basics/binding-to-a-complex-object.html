@@ -1,0 +1,51 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Binding to a Complex Object
+
+Shows data binding to a complex property.
+
+Use an element property in a template using **double mustaches** (`{{}}`), and
+use the **dot** operator ('.') to access child properties:
+
+    <template>
+      <div>{{person.name.first}} {{person.name.last}}.
+        ...
+      </div>
+    </template>
+
+[jsbin](http://jsbin.com/zakula/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div>{{person.name.first}} {{person.name.last}}</div>
+    <div>{{person.title}}</div>
+    <div>{{person.company.name}}</div>
+  </template>
+  <script>
+    Polymer({
+      created: function() {
+        this.person = {
+          name: {
+            first: 'Eric',
+            last: 'Bidelman'
+          },
+          title: 'Digital Jedi',
+          company: {
+            name: 'Google'
+          }
+        }
+      }
+    });
+  </script>
+</polymer-element>

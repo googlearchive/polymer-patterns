@@ -1,0 +1,58 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Using Bind to Create a Single Template Instance
+
+Shows use of **bind** to simplify use of deeply nested objects in a template.
+
+Bindings inside the template are evaluated in the context of the bound
+object.
+
+In this example, the bindings work as follows:
+
+* `person` has a property called `name`; `{{name}}` evaluates to `person.name`.
+* `person.name` has two properties, `first` and `last`; `{{first}}` evaluates
+to `person.name.first` and `{{last}}` evaluate to `person.name.last`.
+
+Read the
+[official documentation for single template instance ](http://www.polymer-project.org/docs/polymer/binding-types.html#single-template-instances).
+
+[jsbin](http://jsbin.com/fazeci/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <template bind="{{person}}">
+      <template bind="{{name}}">
+        <div>{{first}} {{last}}</div>
+      </template>
+      <div>{{title}}</div>
+      <div>{{company.name}}</div>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      created: function() {
+        this.person = {
+          name: {
+            first: 'Eric',
+            last: 'Bidelman'
+          },
+          title: 'Digital Jedi',
+          company: {
+            name: 'Google'
+          }
+        }
+      }
+    });
+  </script>
+</polymer-element>
