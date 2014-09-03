@@ -16,8 +16,7 @@ You can find nodes in a Polymer element's shadow DOM that are tagged with an
 `id` attribute using `this.$.<id>` syntax:
 
     findNodes: function() {
-      var div = this.$.myDiv;
-      ...
+      this.$.myDiv ... ;
     }
 
 The Polymer documentation refers to this as **automatic node finding**.
@@ -25,8 +24,7 @@ The Polymer documentation refers to this as **automatic node finding**.
 Once you've located a shadow DOM node, you can query for child nodes:
 
     findNodes: function() {
-      var div = this.$.myDiv;
-      div.querySelector('p').textContent = 'Found shadowDOM elements';
+      this.$.myDiv.querySelector('p') ... ;
     }
 
 Read the
@@ -40,16 +38,14 @@ Read the
 <polymer-element name="my-element">
   <template>
     <div id="myDiv">
-      <p></p>
+      <p>Old content</p>
       <button on-tap="{{findNodes}}">Find nodes</button>
     </div>
   </template>
   <script>
     Polymer({
-      message: '',
       findNodes: function() {
-        var div = this.$.myDiv;
-        div.querySelector('p').textContent = 'Found shadow DOM elements';
+        this.$.myDiv.querySelector('p').textContent = 'New content';
       }
     });
   </script>

@@ -26,11 +26,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var p = div.querySelector('p');
     var button = div.querySelector('button');
 
-    assert.equal(p.textContent.trim(), '');
+    assert.match(p.textContent.trim(), /Old/);
 
     button.dispatchEvent(new Event('tap'));
     window.setTimeout(function() {
-      assert.match(p.textContent.trim(), /Found/);
+      assert.match(p.textContent.trim(), /New/);
       done();
     }, 0);
   });

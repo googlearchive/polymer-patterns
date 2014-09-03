@@ -8,7 +8,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <!--
-# Binding to a Computed Property
+# Using a Computed Property
 
 Shows data binding to a property that is computed based on other property
 values.
@@ -39,10 +39,8 @@ Read the
 
 <polymer-element name="my-element">
   <template>
-    <label>First Name: </label>
-    <input type="text" value="{{firstName}}">
-    <label>Last Name: </label>
-    <input type="text" value="{{lastName}}">
+    <label>First Name: <input type="text" value="{{firstName}}"></label>
+    <label>Last Name: <input type="text" value="{{lastName}}"></label>
     <div>Full name: {{fullName}}</div>
   </template>
   <script>
