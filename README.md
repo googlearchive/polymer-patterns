@@ -14,39 +14,60 @@ Small, useful, snippets/samples that show how to do things the Polymer way.
 
 2. Hit [http://localhost:8000/tests/](http://localhost:8000/tests/).
 
+## Contributing
 
-## Repo structure
+See [contributing.md](../contributing.md).
 
-All snippets go in `snippets/` and all tests go in `tests/`.
+## Table of Contents
 
-### Snippets
+### Basics
 
-The snippets should be short and atomic.
+- [Binding to a property](snippets/basics/binding-to-a-property.html)
+- [Binding to a complex object](snippets/basics/binding-to-a-complex-object.html)
+- [Binding to a native HTML element](snippets/basics/binding-to-a-native-html-element.html)
+- [Binding to a style](snippets/basics/binding-to-a-style.html)
+- [Using 'bind' to create a single template instance](snippets/basics/using-bind-to-create-a-single-template-instance.html)
+- [Finding Shadow DOM elements](snippets/basics/finding-shadow-dom-elements.html)
 
-Use the following format for a snippet `.html` file:
+### Control Flow
 
-* License
-* Documentation:
-    * Title
-    * A one-line description of what the snippet does
-    * Short discussion
-    * Link to official docs
-    * JSBin link
-* Code
+- [Conditionally hiding an element](snippets/control-flow/conditionally-hiding-an-element.html)
+- [Getting the iteration index when looping over a collection](snippets/control-flow/getting-the-iteration-index-when-looping-over-a-collection.html)
+- [Looping over a collection using iterative templates](snippets/control-flow/looping-over-a-collection-using-iterative-templates.html)
+- [Using conditional templates](snippets/control-flow/using-conditional-templates.html)
+- [Using template repeat with a <tr> or an <option>](snippets/control-flow/using-template-repeat-with-a-tr-or-an-option.html)
 
-Snippet filenames begin with action verbs. For example:
+### Forms
 
-    snippets/control-flow/using_conditional_tempalates.html
+- [Binding a boolean property to a checkbox](snippets/forms/binding-a-boolean-property-to-a-checkbox.html)
+- [Binding to a text input](snippets/forms/binding-to-a-text-input.html)
+- [Binding to a textarea](snippets/forms/binding-to-a-textarea.html)
+- [Implementing simple validation](snippets/forms/implementing-simple-validation.html)
 
-### Tests
+### Observing Changes
 
-We use mocha with chai asserts for testing. All tests go in `tests/` with one
-`.html` file per test. Make sure that the name of the test file is the same as
-the snippet file. For example:
+- [Observing property changes](snippets/observing-changes/observing-property-changes.html)
+- [Observing changes to light DOM children](snippets/observing-changes/observing-changes-to-light-dom-children.html)
+- [Waching for changes to a nested object](snippets/observing-changes/watching-for-changes-to-a-nested-object.html)
 
-  snippets/control-flow/using_conditional_tempalates.html
-  tests/using_conditional_tempalates.html
+### Events
 
-Be sure to add the test file to `tests/all.html`.
+- [Using custom events](snippets/events/using-custom-events.html)
 
-Tests are *required** for each recipe.
+### Filters
+
+- [Using custom filters](snippets/filters/using-custom-filters.html)
+
+### Core Elements
+
+Snippets dealing with
+[Polymer core elements](http://www.polymer-project.org/docs/elements/core-elements.html).
+
+#### Core Toolbar
+
+[Using core-toolbar](snippets/core-elements/core-toolbar/using-core-toolbar.html)
+[Adding a menu button](snippets/core-elements/core-toolbar/adding-a-menu-button.html)
+[Adding button rows](snippets/core-elements/core-toolbar/adding-button-rows.html)
+[Changing toolbar size](snippets/core-elements/core-toolbar/changing-toolbar-size.html)
+
+
