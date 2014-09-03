@@ -10,8 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!--
 # Finding Shadow DOM elements
 
-Shows how to find elements inside the shadow DOM, whether or not they have an
-`id`.
+Shows how to find elements inside the shadow DOM.
 
 Shadow DOM provides encapsulation by hiding DOM subtrees under a
 shadow root, which can be accessed using the **shadowRoot** property:
@@ -38,10 +37,11 @@ using the **this.$** shorhand:
     Polymer({
       message: '',
       queryingShadowRoot: function() {
-        this.shadowRoot.querySelector('div').textContent = "Querying shadowRoot";
+        this.shadowRoot.querySelector('div').textContent = 'Using \
+            this.shadowRoot.querySelector()';
       },
       lookingUpById: function() {
-        this.$.myDiv.textContent = "Automatic node finding by ID";
+        this.$.myDiv.textContent = 'Using this.$.<id>';
       }
     });
   </script>

@@ -28,6 +28,8 @@ See [contributing.md](contributing.md).
 - [Binding to a style](snippets/basics/binding-to-a-style.html)
 - [Using 'bind' to create a single template instance](snippets/basics/using-bind-to-create-a-single-template-instance.html)
 - [Finding Shadow DOM elements](snippets/basics/finding-shadow-dom-elements.html)
+- [Binding to a computed property](snippets/basics/binding-to-a-computed-property.html)
+- [Creating a one-time binding](snippets/basics/creating-a-one-time-binding.html)
 
 ### Control Flow
 
