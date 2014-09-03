@@ -12,15 +12,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 Shows how to find elements inside the shadow DOM.
 
-Shadow DOM provides encapsulation by hiding DOM subtrees under a
-shadow root, which can be accessed using the **shadowRoot** property:
+You can find nodes in a Polymer element's shadow DOM that are tagged with an
+`id` attribute using `this.$.<id>` syntax:
 
-    this.shadowRoot.querySelector('div');
+    findNodes: function() {
+      var div = this.$.myDiv;
+      ...
+    }
 
-If a shadow DOM element has an `id` attribute, you can access the element
-using the **this.$** shorhand:
+The Polymer documentation refers to this as **automatic node finding**.
 
-    this.$.myDiv; // Fetches shadow DOM element with id of 'myDiv'
+Once you've located a shadow DOM node, you can query for child nodes:
+
+    findNodes: function() {
+      var div = this.$.myDiv;
+      div.querySelector('p').textContent = 'Found shadowDOM elements';
+    }
+
+Read the
+[official documentation for automatic node binding](http://www.polymer-project.org/docs/polymer/polymer.html#automatic-node-finding).
 
 [jsbin](http://jsbin.com/hofatu/edit)
 -->
@@ -29,19 +39,17 @@ using the **this.$** shorhand:
 
 <polymer-element name="my-element">
   <template>
-    <div id="myDiv"></div>
-    <button on-tap="{{queryingShadowRoot}}">Querying ShadowRoot</button>
-    <button on-tap="{{lookingUpById}}">Looking up by ID</button>
+    <div id="myDiv">
+      <p></p>
+      <button on-tap="{{findNodes}}">Find nodes</button>
+    </div>
   </template>
   <script>
     Polymer({
       message: '',
-      queryingShadowRoot: function() {
-        this.shadowRoot.querySelector('div').textContent = 'Using \
-            this.shadowRoot.querySelector()';
-      },
-      lookingUpById: function() {
-        this.$.myDiv.textContent = 'Using this.$.<id>';
+      findNodes: function() {
+        var div = this.$.myDiv;
+        div.querySelector('p').textContent = 'Found shadow DOM elements';
       }
     });
   </script>
