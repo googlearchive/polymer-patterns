@@ -16,7 +16,7 @@ Small, useful, snippets/samples that show how to do things the Polymer way.
 
 ## Contributing
 
-See [contributing.md](../contributing.md).
+See [contributing.md](contributing.md).
 
 ## Table of Contents
 
@@ -28,6 +28,8 @@ See [contributing.md](../contributing.md).
 - [Binding to a style](snippets/basics/binding-to-a-style.html)
 - [Using 'bind' to create a single template instance](snippets/basics/using-bind-to-create-a-single-template-instance.html)
 - [Finding Shadow DOM elements](snippets/basics/finding-shadow-dom-elements.html)
+- [Using a computed property](snippets/basics/using-a-computed-property.html)
+- [Creating a one-time binding](snippets/basics/creating-a-one-time-binding.html)
 
 ### Control Flow
 
@@ -35,7 +37,7 @@ See [contributing.md](../contributing.md).
 - [Getting the iteration index when looping over a collection](snippets/control-flow/getting-the-iteration-index-when-looping-over-a-collection.html)
 - [Looping over a collection using iterative templates](snippets/control-flow/looping-over-a-collection-using-iterative-templates.html)
 - [Using conditional templates](snippets/control-flow/using-conditional-templates.html)
-- [Using template repeat with a <tr> or an <option>](snippets/control-flow/using-template-repeat-with-a-tr-or-an-option.html)
+- [Using template repeat with a table row or an option](snippets/control-flow/using-template-repeat-with-a-tr-or-an-option.html)
 
 ### Forms
 
@@ -69,5 +71,4 @@ Snippets dealing with
 [Adding a menu button](snippets/core-elements/core-toolbar/adding-a-menu-button.html)
 [Adding button rows](snippets/core-elements/core-toolbar/adding-button-rows.html)
 [Changing toolbar size](snippets/core-elements/core-toolbar/changing-toolbar-size.html)
-
 

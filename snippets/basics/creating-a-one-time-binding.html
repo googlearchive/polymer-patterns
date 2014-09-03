@@ -1,0 +1,43 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Creating a One Time Binding
+
+Shows simple use of **one-time data binding** in a Polymer element.
+
+**Note: This feature is experimental**
+
+Use **double square brackets** (`[[ ]]`) instead of double mustaches (`{{ }}`)
+to set up a one-time binding. The binding becomes inactive after Polymer sets
+the inital value for the bound property.
+
+A one-time binding can potentially boost performance because you avoid the
+overhead of setting up property observation.
+
+Read the
+[official documentation for one-time bindings](http://www.polymer-project.org/docs/polymer/binding-types.html#one-time-bindings).
+
+[jsbin](http://jsbin.com/dojucu/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <label>Set value of color: <input type="text" value="{{color}}"></label>
+    <p>Initial value of color: [[color]]</p>
+    <p>Current value of color: {{color}}</p>
+  </template>
+  <script>
+    Polymer({
+      color: 'red'
+    });
+  </script>
+</polymer-element>
