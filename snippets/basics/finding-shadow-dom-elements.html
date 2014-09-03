@@ -1,0 +1,48 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Finding Shadow DOM elements
+
+Shows how to find elements inside the shadow DOM, whether or not they have an
+`id`.
+
+Shadow DOM provides encapsulation by hiding DOM subtrees under a
+shadow root, which can be accessed using the **shadowRoot** property:
+
+    this.shadowRoot.querySelector('div');
+
+If a shadow DOM element has an `id` attribute, you can access the element
+using the **this.$** shorhand:
+
+    this.$.myDiv; // Fetches shadow DOM element with id of 'myDiv'
+
+[jsbin](http://jsbin.com/hofatu/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div id="myDiv"></div>
+    <button on-tap="{{queryingShadowRoot}}">Querying ShadowRoot</button>
+    <button on-tap="{{lookingUpById}}">Looking up by ID</button>
+  </template>
+  <script>
+    Polymer({
+      message: '',
+      queryingShadowRoot: function() {
+        this.shadowRoot.querySelector('div').textContent = "Querying shadowRoot";
+      },
+      lookingUpById: function() {
+        this.$.myDiv.textContent = "Automatic node finding by ID";
+      }
+    });
+  </script>
+</polymer-element>
