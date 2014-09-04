@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!--
 # Creating Insertion Points using the Select Attribute
 
-Shows use of the `select` attribute to specify insertion nodes that satisfy
+Shows use of the `select` attribute to specify distributed nodes that satisfy
 matching criteria.
 
 A `<content>` tag with no `select` attribute permits the insertion of any type
@@ -28,8 +28,8 @@ in this snippet:
 The first `<content>` allows insertion of only `<h2>` elements. The second
 `<content>` allows insertion of any element with a class attribute of
 'crucial'. The third `<content>` allows insertion of another Polymer
-element, `<child-el>`. The `<content>` tag without a `select` attribute allows
-insertion of all other distributed nodes.
+element, `<child-el>`. The `<content>` tag without a `select` inserts the
+`<p>A distributed node</p>` node.
 
 You can use `<my-element>` like this:
 
