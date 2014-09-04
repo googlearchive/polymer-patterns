@@ -21,19 +21,20 @@ Use the `<content>` tag to declare an insertion point:
     </template>
 
 The insertion point selects and presents content from the shadow host. Nodes
-inserted using `<content>` are described as **distributed nodes** in Polymer
-documentation.
+inserted using `<content>` are called **distributed nodes**.
 
 Consider this use of the element in this snippet:
 
     <my-element><i>Distributed node</i></my-element>
 
-This renders HTML in the following order:
+This creates the following composed tree:
 
-1. The HTML _before_ `<content>` (`<p>Shadow DOM</p>`).
-1. The distributed node(s) inserted through `<content>` (`<i>Distributed
-  node</i>`).
-1. The HTML _after_ `<content>` (`<p>Shadow DOM again</p>`).
+    <p>Shadow DOM</p>
+    <i>Distributed node</i>
+    <p>Shadow DOM again</p>
+
+Note that the distributed nodes are correctly placed within the shadow DOM
+nodes.
 
 Read more about
 [insertion points](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/#toc-separation-separate)
