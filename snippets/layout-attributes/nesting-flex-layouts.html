@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!--
 # Nesting Flex Layouts
 
-Shows the use of nested elements, each with their own layout attributes, to create complex structures.
+Shows the use of nested elements, each with their own layout attributes.
 
 Consider the following example:
 
@@ -23,7 +23,8 @@ Consider the following example:
       <div flex>Col</div>
     </div>
 
-The parent div will lay its children out horizontally, while each immediate child will lay its children out vertically.
+The parent div lays out its children out horizontally, while each immediate
+child will lay its children out vertically.
 
 Read the
 [official documentation for layout attributes](http://www.polymer-project.org/docs/polymer/layout-attrs.html).
@@ -36,9 +37,6 @@ Read the
 <polymer-element name="my-element" noscript layout vertical>
   <template>
     <style>
-      :host {
-        display: block;
-      }
       div {
         background: lightgreen;
         border: 1px dotted white;

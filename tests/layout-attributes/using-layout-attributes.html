@@ -10,20 +10,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Using vertical layout attributes</title>
+  <title>Using layout attributes</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <script src="../../components/platform/platform.js"></script>
   <link rel="import" href="../../components/polymer-test-tools/tools.html">
   <script src="../../components/polymer-test-tools/htmltest.js"></script>
-  <link rel="import" href="../../snippets/layout-attributes/using-vertical-layout.html">
+  <link rel="import" href="../../snippets/layout-attributes/using-layout-attributes.html">
 </head>
 <body>
-  <my-element></my-element>
+  <my-horizontal-element></my-horizontal-element>
+  <my-vertical-element></my-vertical-element>
 <script>
   document.addEventListener('polymer-ready', function() {
-    var el = document.querySelector('my-element');
+    var el = document.querySelector('my-horizontal-element');
     var section = el.shadowRoot.querySelector('section');
     var styles = getComputedStyle(section);
+    assert.equal(styles.display, 'flex');
+    assert.equal(styles['flex-direction'], 'row');
+
+    el = document.querySelector('my-vertical-element');
+    section = el.shadowRoot.querySelector('section');
+    styles = getComputedStyle(section);
     assert.equal(styles.display, 'flex');
     assert.equal(styles['flex-direction'], 'column');
     done();

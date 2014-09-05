@@ -10,9 +10,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!--
 # Using Flex Attributes
 
-Shows use of `flex` attribute to expand a child of an element using layout attributes.
+Shows use of `flex` attribute to expand a child node.
 
-The `flex` attribute will cause the child to expand to fill as much of its parent container as possible.
+The `flex` attribute causes the child to expand and fill as much of its
+parent container as possible.
 
     <section layout horizontal>
       <div>Foo</div>
@@ -20,7 +21,8 @@ The `flex` attribute will cause the child to expand to fill as much of its paren
       <div>Baz</div>
     </section>
 
-In this example, the second child will expand to take up most of the parent, pushing the third child to the edge of the screen.
+In this example, the second child will expand to take up most of the parent,
+pushing the third child to the edge of the screen.
 
 Read the
 [official documentation for flex attributes](http://www.polymer-project.org/docs/polymer/layout-attrs.html#flexible-children).
@@ -33,10 +35,7 @@ Read the
 <polymer-element name="my-element" noscript>
   <template>
     <style>
-      :host {
-        display: block;
-      }
-      div {
+      [flex] {
         background: lightgreen;
       }
     </style>

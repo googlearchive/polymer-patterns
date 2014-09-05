@@ -8,13 +8,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <!--
-# Using Horizontal Layout Attributes
+# Using Layout Attributes
 
-Shows use of horizontal layout attribute to position children using flexbox
+Shows use of horizontal and vertical layout attributes to position children
+using flexbox.
 
-An element with a `layout` attribute will attempt to layout its children using CSS flexbox. Use an additional `horizontal` or `vertical` attribute to specify the layout direction.
+An element with a `layout` attribute will attempt to lay out its children using
+CSS flexbox. Use an additional `horizontal` or `vertical` attribute to specify
+the layout direction:
 
-    <section layout horizontal>
+    <section layout vertical>
       <div>Foo</div>
       <div>Bar</div>
       <div>Baz</div>
@@ -23,21 +26,23 @@ An element with a `layout` attribute will attempt to layout its children using C
 Read the
 [official documentation for layout attributes](http://www.polymer-project.org/docs/polymer/layout-attrs.html).
 
-[jsbin](http://jsbin.com/luzon/edit)
+[jsbin](http://jsbin.com/bopeh/edit)
 -->
 
 <link rel="import" href="../../components/polymer/polymer.html">
 
-<polymer-element name="my-element" noscript>
+<polymer-element name="my-horizontal-element" noscript>
   <template>
-    <style>
-    :host {
-      display: block;
-    }
-    div {
-      background: lightgreen;
-    }
-    </style>
+    <section layout horizontal>
+      <div>Foo</div>
+      <div>Bar</div>
+      <div>Baz</div>
+    </section>
+  </template>
+</polymer-element>
+
+<polymer-element name="my-vertical-element" noscript>
+  <template>
     <section layout vertical>
       <div>Foo</div>
       <div>Bar</div>
