@@ -10,20 +10,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Creating an insertion point using the content tag</title>
+  <title>Binding to a textarea</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <script src="../components/platform/platform.js"></script>
-  <link rel="import" href="../components/polymer-test-tools/tools.html">
-  <script src="../components/polymer-test-tools/htmltest.js"></script>
-  <link rel="import" href="../snippets/forms/binding-a-boolean-property-to-a-checkbox.html">
+  <script src="../../components/platform/platform.js"></script>
+  <link rel="import" href="../../components/polymer-test-tools/tools.html">
+  <script src="../../components/polymer-test-tools/htmltest.js"></script>
+  <link rel="import" href="../../snippets/forms/binding-to-a-textarea.html">
 </head>
 <body>
-  <my-element><i>Distributed node</i></my-element>
+  <my-element></my-element>
 <script>
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
-    assert.match(el.querySelector('i').textContent, /Distributed/);
-    done();
+    var textarea = el.shadowRoot.querySelector('textarea');
+    assert.equal(el.message, '');
+    assert.equal(textarea.value, '');
+    var text = "hello";
+    textarea.value = text;
+    // Needed because the binding is triggered using an on-input.
+    textarea.dispatchEvent(new Event('input'));
+    window.setTimeout(function() {
+      assert.equal(el.message, text);
+      assert.equal(textarea.value, text);
+      done();
+    }, 0);
   });
 </script>
 </body>

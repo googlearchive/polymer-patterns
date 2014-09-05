@@ -7,34 +7,23 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Binding to a native HTML element</title>
+  <title>Creating an insertion point using the content tag</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <script src="../components/platform/platform.js"></script>
-  <link rel="import" href="../components/polymer-test-tools/tools.html">
-  <script src="../components/polymer-test-tools/htmltest.js"></script>
-  <link rel="import" href="../snippets/basics/binding-to-a-native-html-element.html">
+  <script src="../../components/platform/platform.js"></script>
+  <link rel="import" href="../../components/polymer-test-tools/tools.html">
+  <script src="../../components/polymer-test-tools/htmltest.js"></script>
+  <link rel="import" href="../../snippets/forms/binding-a-boolean-property-to-a-checkbox.html">
 </head>
 <body>
-  <my-element></my-element>
+  <my-element><i>Distributed node</i></my-element>
 <script>
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
-    var input = el.shadowRoot.querySelector('input')
-    var p = el.shadowRoot.querySelector('p')
-    assert.equal(input.value, 10);
-    assert.equal(p.textContent, 10);
-
-    input.value = 20;
-    // Needed because the binding is triggered using an on-input.
-    input.dispatchEvent(new Event('input'));
-    window.setTimeout(function() {
-      assert.equal(p.textContent, 20);
-      done();
-    }, 0);
+    assert.match(el.querySelector('i').textContent, /Distributed/);
+    done();
   });
 </script>
 </body>

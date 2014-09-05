@@ -36,7 +36,7 @@ We use mocha with chai asserts for testing. All tests go in `tests/` with one
 the snippet file. For example:
 
   snippets/control-flow/using-conditional-tempalates.html
-  tests/using-conditional-tempalates.html
+  tests/control-flow/using-conditional-tempalates.html
 
 Be sure to add the test file to `tests/all.html`.
 

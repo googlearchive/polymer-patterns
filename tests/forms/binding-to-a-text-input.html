@@ -10,30 +10,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Using custom events</title>
+  <title>Binding to a text input</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <script src="../components/platform/platform.js"></script>
-  <link rel="import" href="../components/polymer-test-tools/tools.html">
-  <script src="../components/polymer-test-tools/htmltest.js"></script>
-  <link rel="import" href="../snippets/events/using-custom-events.html">
+  <script src="../../components/platform/platform.js"></script>
+  <link rel="import" href="../../components/polymer-test-tools/tools.html">
+  <script src="../../components/polymer-test-tools/htmltest.js"></script>
+  <link rel="import" href="../../snippets/forms/binding-to-a-text-input.html">
 </head>
 <body>
-  <parent-element></parent-element>
+  <my-element></my-element>
   <script>
     document.addEventListener('polymer-ready', function() {
-      var parent = document.querySelector('parent-element');
-      var child = parent.shadowRoot.querySelector('child-element');
-      var input = child.shadowRoot.querySelector('input');
-      var button = child.shadowRoot.querySelector('button');
+      var el = document.querySelector('my-element');
+      var input = el.shadowRoot.querySelector('input');
+      assert.equal(el.message, '');
       assert.equal(input.value, '');
-      assert.equal(parent.message, '');
-
-      // Add data to the input and fire the custom event.
-      input.value = 'x';
-      button.dispatchEvent(new Event('tap'));
-
+      var text = "hello";
+      input.value = text;
+      // Needed because the binding is triggered using an on-input.
+      input.dispatchEvent(new Event('input'));
       window.setTimeout(function() {
-        assert.match(parent.message, /x/);
+        assert.equal(el.message, text);
+        assert.equal(input.value, text);
         done();
       }, 0);
     });
