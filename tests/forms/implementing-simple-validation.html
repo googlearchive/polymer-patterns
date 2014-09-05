@@ -10,25 +10,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Using bind to create a single template instance</title>
+  <title>Implementing simple validation</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-
-  <script src="../components/platform/platform.js"></script>
-  <link rel="import" href="../components/polymer-test-tools/tools.html">
-  <script src="../components/polymer-test-tools/htmltest.js"></script>
-
-  <link rel="import" href="../snippets/basics/using-bind-to-create-a-single-template-instance.html">
+  <script src="../../components/platform/platform.js"></script>
+  <link rel="import" href="../../components/polymer-test-tools/tools.html">
+  <script src="../../components/polymer-test-tools/htmltest.js"></script>
+  <link rel="import" href="../../snippets/forms/implementing-simple-validation.html">
 </head>
 <body>
   <my-element></my-element>
 <script>
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
-    var divs = el.shadowRoot.querySelectorAll('div');
-    assert.equal(divs[0].textContent, 'Eric Bidelman');
-    assert.equal(divs[1].textContent, 'Digital Jedi');
-    assert.equal(divs[2].textContent, 'Google');
-    done();
+    var input = el.shadowRoot.querySelector('input');
+    assert.equal(el.message, '');
+    assert.equal(el.messageValidationError, '');
+    var text = 'x';
+    input.value = text;
+    input.dispatchEvent(new Event('input')); // Binding updated on-input.
+    window.setTimeout(function() {
+      assert.equal(el.message, text);
+      assert.match(el.messageValidationError, /Must be between/);
+      done();
+    }, 0);
   });
 </script>
 </body>

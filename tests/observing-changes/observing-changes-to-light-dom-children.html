@@ -10,34 +10,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Creating a one time binding</title>
+  <title>Observing changes to light DOM children</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <script src="../components/platform/platform.js"></script>
-  <link rel="import" href="../components/polymer-test-tools/tools.html">
-  <script src="../components/polymer-test-tools/htmltest.js"></script>
-  <link rel="import" href="../snippets/basics/creating-a-one-time-binding.html">
+  <script src="../../components/platform/platform.js"></script>
+  <link rel="import" href="../../components/polymer-test-tools/tools.html">
+  <script src="../../components/polymer-test-tools/htmltest.js"></script>
+  <link rel="import" href="../../snippets/observing-changes/observing-property-changes.html">
 </head>
 <body>
   <my-element></my-element>
 <script>
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
-    var input = el.shadowRoot.querySelector('input');
-    var paras = el.shadowRoot.querySelectorAll('p');
-    assert.equal(el.color, 'red');
-    assert.equal(input.value, 'red');
-    assert.match(paras[0].textContent, /red/);
-    assert.match(paras[1].textContent, /red/);
-    input.value = 'x';
-    // Needed because the binding is triggered using an on-input.
-    input.dispatchEvent(new Event('input'));
+    assert.equal(el.children.length, 0);
+    assert.equal(el.message, '');
 
-    setTimeout(function() {
-      assert.match(paras[0].textContent, /red/);
-      assert.match(paras[1].textContent, /x/);
+    var newDiv = document.createElement('div');
+    newDiv.textContent = 'x';
+    el.appendChild(newDiv);
+    window.setTimeout(function() {
+      assert.equal(el.children.length, 1);
+      assert.match(el.children[0].textContent, /x/)
       done();
     }, 0);
-
   });
 </script>
 </body>

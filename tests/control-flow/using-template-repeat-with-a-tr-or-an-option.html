@@ -10,12 +10,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Using iterative templates</title>
+  <title>Iteration over a <tr> or <option></title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <script src="../components/platform/platform.js"></script>
-  <link rel="import" href="../components/polymer-test-tools/tools.html">
-  <script src="../components/polymer-test-tools/htmltest.js"></script>
-  <link rel="import" href="../snippets/control-flow/looping-over-a-collection-using-iterative-templates.html">
+  <script src="../../components/platform/platform.js"></script>
+  <link rel="import" href="../../components/polymer-test-tools/tools.html">
+  <script src="../../components/polymer-test-tools/htmltest.js"></script>
+  <link rel="import" href="../../snippets/control-flow/using-template-repeat-with-a-tr-or-an-option.html">
 </head>
 <body>
   <my-element></my-element>
@@ -24,12 +24,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var el = document.querySelector('my-element');
     el.fruits = ['x', 'y'];
     setTimeout(function() {
-      var divs = el.shadowRoot.querySelectorAll('div');
-      assert.equal(divs.length, el.fruits.length);
-      assert.equal(divs[0].textContent.trim(), 'x');
-      assert.equal(divs[1].textContent.trim(), 'y');
+      var rows = el.shadowRoot.querySelectorAll('tr');
+      var options= el.shadowRoot.querySelectorAll('option');
+      assert.equal(rows.length, el.fruits.length);
+      assert.equal(options.length, el.fruits.length);
+      assert.equal(rows[0].textContent.trim(), 'x');
+      assert.equal(rows[1].textContent.trim(), 'y');
+      assert.equal(options[0].textContent.trim(), 'x');
+      assert.equal(options[1].textContent.trim(), 'y');
       done();
-    });
+  });
+
   });
 </script>
 </body>

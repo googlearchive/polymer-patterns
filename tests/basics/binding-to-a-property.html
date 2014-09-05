@@ -10,27 +10,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Conditionally hiding an element tests</title>
+  <title>Binding to a property</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <script src="../components/platform/platform.js"></script>
-  <link rel="import" href="../components/polymer-test-tools/tools.html">
-  <script src="../components/polymer-test-tools/htmltest.js"></script>
-  <link rel="import" href="../snippets/basics/finding-shadow-dom-elements.html">
+  <script src="../../components/platform/platform.js"></script>
+  <link rel="import" href="../../components/polymer-test-tools/tools.html">
+  <script src="../../components/polymer-test-tools/htmltest.js"></script>
+  <link rel="import" href="../../snippets/basics/binding-to-a-property.html">
 </head>
 <body>
   <my-element></my-element>
 <script>
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
-    var div = el.$.myDiv;
-    var p = div.querySelector('p');
-    var button = div.querySelector('button');
-
-    assert.match(p.textContent.trim(), /Old/);
-
-    button.dispatchEvent(new Event('tap'));
+    var p = el.shadowRoot.querySelector('p');
+    assert.match(p.textContent, /red/)
+    el.color = 'green';
     window.setTimeout(function() {
-      assert.match(p.textContent.trim(), /New/);
+      assert.match(p.textContent, /green/)
       done();
     }, 0);
   });
