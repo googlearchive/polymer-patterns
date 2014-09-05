@@ -10,13 +10,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!--
 # Creating Insertion Points using the Select Attribute
 
-Shows use of the `select` attribute to specify distributed nodes that satisfy
-matching criteria.
+Shows use of the `select` attribute with a CSS selector to chose which nodes
+get distributed at an insertion point.
 
 A `<content>` tag with no `select` attribute permits the insertion of any type
 of distributed node.  Use the `select` attribute to only allow the insertion of
-nodes that match a condition. Consider the following use of `<content>` tags
-in this snippet:
+nodes that match a CSS selector.
+
+Consider the following use of `<content>` tags in this snippet:
 
     <template>
       <content select="h2"></content>
@@ -47,7 +48,7 @@ This generates the following composed tree:
       <child-el></child-el>
       <p>A distributed node</p>
 
-Note that the order of the inserted nodes in the composed tree is determined
+Note that the order of the rendered nodes in the composed tree is determined
 by the order of the `<content>` tags in the _element definition_, not the order
 in which the child nodes are passed to the element.
 

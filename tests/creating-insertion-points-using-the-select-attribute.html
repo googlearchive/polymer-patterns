@@ -27,13 +27,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script>
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
-    var contentTags = el.shadowRoot.querySelectorAll('content');
-    assert.match(contentTags[0].getDistributedNodes()[0].textContent,
-        /headline/);
-    assert.equal(contentTags[1].getDistributedNodes()[0].className,
-        'crucial');
-    assert.match(contentTags[2].getDistributedNodes()[0].tagName,
-        new RegExp('CHILD-EL', 'i'));
+    assert.isFalse(el.children[0].getDestinationInsertionPoints()[0].
+          hasAttribute('select'));
+    assert.equal(el.children[1].getDestinationInsertionPoints()[0].
+          getAttribute('select'), '.crucial' );
+    assert.equal(el.children[2].getDestinationInsertionPoints()[0].
+          getAttribute('select'), 'h2' );
+    assert.match(el.children[3].getDestinationInsertionPoints()[0].
+          getAttribute('select'), new RegExp('CHILD-EL', 'i'));
     done();
   });
 </script>
