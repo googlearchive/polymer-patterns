@@ -1,0 +1,95 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Selecting Items using the Core Selector Element
+
+Shows how to select items using the `<core-selector>` Polymer element.
+
+You can use `<core-selector>` for managing selection state and configure
+it by passing arguments:
+
+    <core-selector id="cs"
+                   selected="green"
+                   multi
+                   valueattr="value">
+      <template repeat="{{color in colors}}">
+        <div value="{{color}}">{{color}}</div>
+      </template>
+    </core-selector>
+
+- the `multi` argument allows for the selection of mulitple values
+- the `selected` argument pre-selects a value
+- the `valueattr` argument lets you specify the attribute to use for
+selection.  This snippet uses the `value` attribute of the child `<div>`
+elements.
+
+You can access the selected items by using `<core-selector>`'s `selected`
+property:
+
+    <template repeat="{{color in $.cs.selected}}">
+      <div>{{color}}</div>
+    </template>
+
+Polymer assigns a `.core-selected` class to selected items, and you can define
+styles for this class.
+
+### To select only a single item
+
+This snippet uses `<core-selector>` to select multiple items. To restrict
+selection to a single item, remove the `multi` attribute, and delete the
+following:
+
+    <template repeat="{{color in $.cs.selected}}">
+      <div>{{color}}</div>
+    </template>
+
+Without the `multi` argument, `<core-selector>`'s `selected` attribute
+returns a single value, not an array. You can get that value like this:
+
+    <div>{{$.cs.selected}}</div>
+
+Read the
+[official documentation for `core-selector`](http://www.polymer-project.org/docs/elements/core-elements.html#core-selector).
+
+[jsbin for multi select](http://jsbin.com/vuriri/edit)
+[jsbin for single select](http://jsbin.com/hamuf/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+<link rel="import" href="../../components/core-selector/core-selector.html">
+
+<polymer-element name="my-element">
+  <template>
+    <style>
+      .core-selected {
+        font-weight: bold;
+      }
+    </style>
+    <core-selector id="cs"
+                   selected="green"
+                   multi
+                   valueattr="value">
+      <template repeat="{{color in colors}}">
+        <div value="{{color}}">{{color}}</div>
+      </template>
+    </core-selector>
+    <hr>
+    <template repeat="{{color in $.cs.selected}}">
+      <div>{{color}}</div>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      created: function() {
+        this.colors = ['red', 'green', 'blue'];
+      }
+    });
+  </script>
+</polymer-element>

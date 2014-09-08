@@ -1,0 +1,81 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+
+# Selection Many Items using Checkboxes
+
+Shows use of checkboxes to select many items from a small collection of items.
+
+The snippet maintains a `colors` collection containing the names of colors, and
+a corresponding `checked` collection to track whether a color is selected:
+
+    Polymer({
+      created: function() {
+        this.colors = ['red', 'green', 'blue'];
+        this.checked = [false, true, false];
+      }
+      ...
+    });
+
+The `value` of each checkbox binds to a `colors` member, and each checkbox's
+`checked` status binds to a `checked` member:
+
+    <input name="color" type="checkbox" value="{{color}}"
+           checked="{{checked[i]}}">
+
+
+When you check a checkbox, you change the contents of `checked`. This triggers
+the `checkedChanged` changed watcher, which updates `selectedColors` to hold
+the currently selected colors:
+
+    Polymer({
+      created: function() {
+        ...
+      },
+      selectedChanged: function() {
+        this.selectedColors = this.colors.filter(function(color) {
+          return this.checked[this.colors.indexOf(color)];
+        }.bind(this));
+      },
+    });
+
+[jsbin](http://jsbin.com/tahin/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div>
+      <template repeat="{{color, i in colors}}">
+        <label>{{color}}
+          <input name="color" type="checkbox" value="{{color}}"
+                 checked="{{checked[i]}}">
+        </label>
+      </template>
+    </div>
+    <template repeat="{{fc in selectedColors}}">
+      <div>{{fc}}</div>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      created: function() {
+        this.colors = ['red', 'green', 'blue'];
+        this.checked = [false, true, false];
+      },
+      checkedChanged: function(e, detail, sender) {
+        this.selectedColors = this.colors.filter(function(color) {
+          return this.checked[this.colors.indexOf(color)];
+        }.bind(this));
+      },
+    });
+  </script>
+</polymer-element>
