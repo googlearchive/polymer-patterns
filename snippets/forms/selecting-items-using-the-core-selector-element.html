@@ -16,7 +16,7 @@ You can use `<core-selector>` for managing selection state and configure
 it by passing arguments:
 
     <core-selector id="cs"
-                   selected={{selected}}
+                   selected="{{selected}}"
                    multi
                    valueattr="value">
       <template repeat="{{color in colors}}">
@@ -73,7 +73,7 @@ Read the
         font-weight: bold;
       }
     </style>
-    <core-selector selected={{selected}} multi valueattr="value">
+    <core-selector selected="{{selected}}" multi valueattr="value">
       <template repeat="{{color in colors}}">
         <div value="{{color}}">{{color}}</div>
       </template>

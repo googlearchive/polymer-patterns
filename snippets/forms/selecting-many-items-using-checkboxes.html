@@ -36,14 +36,13 @@ The `updateSelectedColors()` function sets the value of `selectedColors`, an
 array that holds the colors with corresponding `checked` status of `true`.
 
 The `value` of each checkbox binds to an `items` key, and each checkbox's
-`checked` status binds to an `items` member's `checked` value:
+`checked` status binds to an `item`'s `checked` value:
 
   <template>
     <div on-change="{{updateSelectedColors}}">
       <template repeat="{{color in colors}}">
         <label>{{color}}
-          <input name="colors"
-                 type="checkbox"
+          <input type="checkbox"
                  value="{{color}}"
                  checked="{{items[color].checked}}">
         </label>
@@ -66,8 +65,7 @@ the `updateSelectedColors()` handler, which updates `selectedColors`.
     <div on-change="{{updateSelectedColors}}">
       <template repeat="{{color in colors}}">
         <label>{{color}}
-          <input name="colors"
-                 type="checkbox"
+          <input type="checkbox"
                  value="{{color}}"
                  checked="{{items[color].checked}}">
         </label>
