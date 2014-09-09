@@ -1,0 +1,61 @@
+<!--
+  Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+  This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+  The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+  The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+  Code distributed by Google as part of the polymer project is also
+  subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+  -->
+
+  <!--
+# Applying styles by piercing Shadow DOM boundaries
+
+Shows how to use the `::shadow` pseudo-element and the `/deep/` combinator
+to pierce through the Shadow DOM boundaries of elements.
+
+When you define styles in `<head>` for a Polymer element you are using,
+those styles do not penetrate the element's shadow boundaries. For that, you
+must use the `::shadow` pseudo-element or the `/deep/` combinator.
+For example:
+
+    <style>
+      body /deep/ h2 {
+        color: green;
+      }
+      my-element::shadow p {
+        color: red;
+      }
+    </style>
+
+The style definition using `/deep/` ignores *all* shadow boundaries for `<h2>`
+elements. The style definition using `::shadow` pierces the shadow boundaries of
+`<my-element>` to make all `<p>` elements in it red.
+
+Assume you have the following HTML in the `<body>`:
+
+    <my-element></my-element>
+    <h2>Heading outside my-element</h2>
+
+This generates the following composed tree:
+
+    <h2>Heading inside my-element</h2>
+    <p>Para inside my-element</p>
+    <h2>Heading outside my-element</h2>
+
+Using `/deep/` makes both `<h2> elements green, and using `::shadow` makes the
+`<p>` element red.
+
+Read more about
+[using `/deep/` and `::shadow` in your styles](http://www.polymer-project.org/articles/styling-elements.html#style-fromoutside).
+
+[jsbin](http://jsbin.com/xuwogu/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element" noscript>
+  <template>
+    <h2>Heading inside my-element</h2>
+    <p>Para inside my-element</p>
+  </template>
+</polymer-element>

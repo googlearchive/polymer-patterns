@@ -1,0 +1,42 @@
+<!doctype html>
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Using :host with a CSS selector</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="../../components/platform/platform.js"></script>
+  <link rel="import" href="../../components/polymer-test-tools/tools.html">
+  <script src="../../components/polymer-test-tools/htmltest.js"></script>
+  <link rel="import" href="../../snippets/styling-elements/using-host-with-a-css-selector.html">
+</head>
+<body>
+  <my-element></my-element>
+  <my-element class="red"></my-element>
+  <my-element class="blue"></my-element>
+
+  <script>
+    document.addEventListener('polymer-ready', function() {
+      var red = 'rgb(255, 0, 0)';
+      var green = 'rgb(0, 128, 0)';
+      var blue = 'rgb(0, 0, 255)';
+
+      var elements = document.querySelectorAll('my-element');
+      assert.equal(window.getComputedStyle(elements[0])
+          .getPropertyValue('color'), green);
+      assert.equal(window.getComputedStyle(elements[1])
+          .getPropertyValue('color'), red);
+      assert.equal(window.getComputedStyle(elements[2])
+          .getPropertyValue('color'), blue);
+      done();
+    });
+  </script>
+</body>
+</html>

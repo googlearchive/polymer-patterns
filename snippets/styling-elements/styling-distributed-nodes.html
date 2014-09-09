@@ -1,0 +1,71 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Styling distributed nodes
+
+Shows the use of the `::content` pseudo element to style distributed nodes.
+
+The `<content>` tag allows you to select and insert nodes into
+predefined locations in your element. These locations are called insertion
+points and the inserted nodes are called distributed nodes.
+See [insertion point snippets](../insertion-points/) to learn more about the
+`<content>` tag and distributed nodes.
+
+The CSS `::content` pseudo-element is a way to style nodes that pass through an
+insertion point:
+
+    ::content p {
+      color: red;
+    }
+
+    ::content .blue {
+      color: blue;
+    }
+
+In this snippet, distributed `<p>` elements are red, and distributed `<p>`
+elements _with the class "blue" are blue. You can use `<my-element>`
+like this:
+
+    <my-element>
+      <p class="blue">Blue distributed node</p>
+      <p>Red distributed node</p>
+    </my-element>
+
+Doing so generates this composed tree:
+
+      <p class="blue">Blue distributed node</p>
+      <p>Inside my-element</p>
+      <p>Red distributed node</p>
+
+Note that since styles defined using `::content` apply only to distributed
+nodes, the `<p>` sandwiched between the `<content>` tags in `<my-element>` is
+not affected by them.
+
+[jsbin](http://jsbin.com/lojeji/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element" noscript>
+  <template>
+    <style>
+      ::content p {
+        color: red;
+      }
+
+      ::content .blue {
+        color: blue;
+      }
+    </style>
+    <content select=".blue"></content>
+    <p>Inside my-element</p>
+    <content></content>
+  </template>
+</polymer-element>

@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script>
   mocha.setup({ui: 'tdd', slow: 1000, timeout: 5000, htmlbase: ''});
 
+
   htmlSuite('basics', function() {
     htmlTest('basics/binding-to-a-complex-object.html');
     htmlTest('basics/binding-to-a-native-html-element.html');
@@ -55,6 +56,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     htmlTest('observing-changes/observing-changes-to-light-dom-children.html');
     htmlTest('observing-changes/observing-property-changes.html');
     htmlTest('observing-changes/watching-for-changes-to-a-nested-object.html');
+  });
+
+  htmlSuite('styling-elements', function() {
+    htmlTest('styling-elements/defining-styles-inside-a-polymer-element.html');
+    htmlTest('styling-elements/programmatically-changing-the-styles-of-an-element.html');
+    htmlTest('styling-elements/using-host-with-a-css-selector.html');
+    htmlTest('styling-elements/applying-styles-by-piercing-shadow-dom-boundaries.html');
+    htmlTest('styling-elements/styling-distributed-nodes.html');
+    htmlTest('styling-elements/using-host-context-to-theme-an-element.html');
   });
 
   htmlSuite('layout attributes', function() {
