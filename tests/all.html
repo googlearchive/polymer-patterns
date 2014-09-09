@@ -60,6 +60,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     htmlTest('observing-changes/watching-for-changes-to-a-nested-object.html');
   });
 
+  htmlSuite('layout attributes', function() {
+    htmlTest('layout-attributes/using-layout-attributes.html');
+    htmlTest('layout-attributes/using-flex.html');
+    htmlTest('layout-attributes/nesting-flex-layouts.html');
+  });
+
   htmlSuite('core-elements/core-toolbar', function() {
     htmlTest('core-elements/core-toolbar/using-core-toolbar.html');
     htmlTest('core-elements/core-toolbar/changing-toolbar-size.html');
