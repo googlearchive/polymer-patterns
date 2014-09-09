@@ -24,15 +24,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   document.addEventListener('polymer-ready', function() {
     var el = document.querySelector('my-element');
     var inputs = el.shadowRoot.querySelectorAll('input');
-    assert.deepEqual(el.selectedColors, undefined);
+    assert.deepEqual(el.selectedColors, [el.colors[1]]);
     assert.isFalse(inputs[0].checked);
     assert.isTrue(inputs[1].checked);
     assert.isFalse(inputs[2].checked);
 
     inputs[0].checked = true;
-    inputs[0].dispatchEvent(new Event('change'));
+    inputs[0].dispatchEvent(new Event('change', {'bubbles': true}));
     window.setTimeout(function() {
-      assert.deepEqual(el.selectedColors, ['red', 'green']);
+      assert.deepEqual(el.selectedColors, [el.colors[0], el.colors[1]]);
       done();
     }, 0);
   });

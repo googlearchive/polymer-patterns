@@ -16,7 +16,7 @@ You can use `<core-selector>` for managing selection state and configure
 it by passing arguments:
 
     <core-selector id="cs"
-                   selected="green"
+                   selected={{selected}}
                    multi
                    valueattr="value">
       <template repeat="{{color in colors}}">
@@ -30,7 +30,7 @@ it by passing arguments:
 selection.  This snippet uses the `value` attribute of the child `<div>`
 elements.
 
-You can access the selected items by using `<core-selector>`'s `selected`
+Access the selected items by using `<core-selector>`'s `selected`
 property:
 
     <template repeat="{{color in $.cs.selected}}">
@@ -38,9 +38,10 @@ property:
     </template>
 
 Polymer assigns a `.core-selected` class to selected items, and you can define
-styles for this class.
+styles for this class. You can also configure the name to something other than
+`.core-selected`.
 
-### To select only a single item
+### Allowing only a single item to be selected
 
 This snippet uses `<core-selector>` to select multiple items. To restrict
 selection to a single item, remove the `multi` attribute, and delete the
@@ -50,7 +51,7 @@ following:
       <div>{{color}}</div>
     </template>
 
-Without the `multi` argument, `<core-selector>`'s `selected` attribute
+Without the `multi` argument, `<core-selector>`'s `selected` property
 returns a single value, not an array. You can get that value like this:
 
     <div>{{$.cs.selected}}</div>
@@ -72,16 +73,13 @@ Read the
         font-weight: bold;
       }
     </style>
-    <core-selector id="cs"
-                   selected="green"
-                   multi
-                   valueattr="value">
+    <core-selector selected={{selected}} multi valueattr="value">
       <template repeat="{{color in colors}}">
         <div value="{{color}}">{{color}}</div>
       </template>
     </core-selector>
     <hr>
-    <template repeat="{{color in $.cs.selected}}">
+    <template repeat="{{color in selected}}">
       <div>{{color}}</div>
     </template>
   </template>
@@ -89,6 +87,7 @@ Read the
     Polymer({
       created: function() {
         this.colors = ['red', 'green', 'blue'];
+        this.selected = this.colors[1];
       }
     });
   </script>

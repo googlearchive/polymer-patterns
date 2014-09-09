@@ -8,74 +8,93 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <!--
-
-# Selection Many Items using Checkboxes
+# Selecting Many Items using Checkboxes
 
 Shows use of checkboxes to select many items from a small collection of items.
 
-The snippet maintains a `colors` collection containing the names of colors, and
-a corresponding `checked` collection to track whether a color is selected:
+The snippet maintains an `items` collection with colors as keys, and
+corresponding boolean `checked` values that track whether a color is selected:
 
     Polymer({
       created: function() {
-        this.colors = ['red', 'green', 'blue'];
-        this.checked = [false, true, false];
-      }
-      ...
-    });
-
-The `value` of each checkbox binds to a `colors` member, and each checkbox's
-`checked` status binds to a `checked` member:
-
-    <input name="color" type="checkbox" value="{{color}}"
-           checked="{{checked[i]}}">
-
-
-When you check a checkbox, you change the contents of `checked`. This triggers
-the `checkedChanged` changed watcher, which updates `selectedColors` to hold
-the currently selected colors:
-
-    Polymer({
-      created: function() {
-        ...
+        this.items = {
+          red: {checked: false},
+          green: {checked: true},
+          blue: {checked: false}
+        };
+        this.colors = Object.keys(this.items);
+        this.updateSelectedColors();
       },
-      selectedChanged: function() {
+      updateSelectedColors: function() {
         this.selectedColors = this.colors.filter(function(color) {
-          return this.checked[this.colors.indexOf(color)];
+          return this.items[color].checked;
         }.bind(this));
-      },
+      }
     });
 
-[jsbin](http://jsbin.com/tahin/edit)
+The `updateSelectedColors()` function sets the value of `selectedColors`, an
+array that holds the colors with corresponding `checked` status of `true`.
+
+The `value` of each checkbox binds to an `items` key, and each checkbox's
+`checked` status binds to an `items` member's `checked` value:
+
+  <template>
+    <div on-change="{{updateSelectedColors}}">
+      <template repeat="{{color in colors}}">
+        <label>{{color}}
+          <input name="colors"
+                 type="checkbox"
+                 value="{{color}}"
+                 checked="{{items[color].checked}}">
+        </label>
+      </template>
+    </div>
+    ...
+  </template>
+
+Checking a checkbox causes on `on-change` event to fire. This triggers
+the `updateSelectedColors()` handler, which updates `selectedColors`.
+
+
+[jsbin](http://jsbin.com/fesude/edit)
 -->
 
 <link rel="import" href="../../components/polymer/polymer.html">
 
 <polymer-element name="my-element">
   <template>
-    <div>
-      <template repeat="{{color, i in colors}}">
+    <div on-change="{{updateSelectedColors}}">
+      <template repeat="{{color in colors}}">
         <label>{{color}}
-          <input name="color" type="checkbox" value="{{color}}"
-                 checked="{{checked[i]}}">
+          <input name="colors"
+                 type="checkbox"
+                 value="{{color}}"
+                 checked="{{items[color].checked}}">
         </label>
       </template>
     </div>
-    <template repeat="{{fc in selectedColors}}">
-      <div>{{fc}}</div>
+    <hr>
+    <template repeat="{{color in selectedColors}}">
+      <div>{{color}}</div>
     </template>
   </template>
   <script>
     Polymer({
       created: function() {
-        this.colors = ['red', 'green', 'blue'];
-        this.checked = [false, true, false];
+        this.items = {
+          red: {checked: false},
+          green: {checked: true},
+          blue: {checked: false}
+        };
+        this.colors = Object.keys(this.items);
+        this.colors.sort();
+        this.updateSelectedColors();
       },
-      checkedChanged: function(e, detail, sender) {
+      updateSelectedColors: function() {
         this.selectedColors = this.colors.filter(function(color) {
-          return this.checked[this.colors.indexOf(color)];
+          return this.items[color].checked;
         }.bind(this));
-      },
+      }
     });
   </script>
 </polymer-element>
