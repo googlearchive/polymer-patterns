@@ -44,6 +44,9 @@ See [contributing.md](contributing.md).
 - [Binding a boolean property to a checkbox](snippets/forms/binding-a-boolean-property-to-a-checkbox.html)
 - [Binding to a text input](snippets/forms/binding-to-a-text-input.html)
 - [Binding to a textarea](snippets/forms/binding-to-a-textarea.html)
+- [Selecting one item using radio buttons](selecting-one-item-using-radio-buttons.html)
+- [Selecting manu items using checkboxes](selecting-many-items-using-checkboxes.html)
+- [Selecting items using the core-selector element](selecting-items-using-the-core-selector-element.html)
 - [Implementing simple validation](snippets/forms/implementing-simple-validation.html)
 
 ### Observing Changes
@@ -62,8 +65,15 @@ See [contributing.md](contributing.md).
 
 ### Core Elements
 
-Snippets dealing with
+Snippets using
 [Polymer core elements](http://www.polymer-project.org/docs/elements/core-elements.html).
+
+#### core-toolbar
+
+-[Using core-toolbar](snippets/core-elements/core-toolbar/using-core-toolbar.html)
+-[Changing toolbar size](snippets/core-elements/core-toolbar/changing-toolbar-size.html)
+-[Adding a menu button](snippets/core-elements/core-toolbar/adding-a-menu-button.html)
+-[Adding button rows](snippets/core-elements/core-toolbar/adding-button-rows.html)
 
 #### Core Toolbar
 
