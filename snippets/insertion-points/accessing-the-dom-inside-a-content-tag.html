@@ -1,0 +1,89 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Accessing the DOM inside a `content` tag
+
+Shows how to access the distributed nodes inserted into an element's DOM through
+the `<content>` tag.
+
+To understand how to use the `<content>` tag to insert distributed nodes
+into an element, see
+[Creating an insertion point using the `content` tag](creating-an-insertion-point-using-the-content-tag.html))
+and
+[Creating insertion points using the `select` attribute](creating-insertion-points-using-the-select-attribute.html)).
+
+As the latter shows, not every node passed as a child to a Polymer element gets
+inserted into the element's DOM. To get the nodes that are inserted, call
+`getDistributedNodes()` on a `<content>` tag in a Polymer element. For example,
+you can get distributed nodes inserted through the `<content>` tag in
+`<my-element>` (with an `id` of 'crucial') like this:
+
+    this.$.crucial.getDistributedNodes();
+
+Getting the distributed nodes may or may not be the same as getting an
+element's `children`.
+
+Consider the case when  you use `<my-element>` in this way:
+
+    <my-element>
+      <p>A para</p>
+      <p class="crucial">Crucial distributed para</p>
+    </my-element>
+
+Using `this.$.crucial.getDistributedNodes()` returns the only `<p>` node
+inserted through the `<content>` tag:
+
+    <p class="crucial">Crucial distributed para</p>
+
+Using `this.children` returns both `<p>` nodes:
+
+    <p>A para</p>
+    <p class="crucial">Crucial distributed para</p>
+
+Avoid using `this.children` to access distributed nodes. Always use
+`getDistributedNodes()`.
+
+[jsbin](http://jsbin.com/juyeme/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <content id="crucial" select=".crucial"></content>
+    <button on-tap="{{showDistributedNodes}}">Show distributed nodes</button>
+    <button on-tap="{{showChildren}}">Show children</button>
+    <template repeat="{{node in nodes}}">
+      <div>{{node}}</div>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      created: function() {
+        nodes: [];
+      },
+      showDistributedNodes: function() {
+        this.getNodes(this.$.crucial.getDistributedNodes());
+      },
+      showChildren: function() {
+        this.getNodes(this.children);
+      },
+      getNodes: function(_nodes) {
+        this.nodes = [];
+        for (var i = 0; i < _nodes.length; i++) {
+          var html = _nodes[i].outerHTML;
+          if (html && html.trim()) {
+            this.nodes.push(html);
+          }
+        }
+      }
+    });
+  </script>
+</polymer-element>
