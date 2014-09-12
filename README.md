@@ -16,7 +16,7 @@ Small, useful snippets/samples that show how to do things the Polymer way.
 
 ## Contributing
 
-See [contributing.md](contributing.md).
+See the [contribution guide](CONTRIBUTING.md).
 
 ## Table of Contents
 
@@ -44,6 +44,9 @@ See [contributing.md](contributing.md).
 - [Binding a boolean property to a checkbox](snippets/forms/binding-a-boolean-property-to-a-checkbox.html)
 - [Binding to a text input](snippets/forms/binding-to-a-text-input.html)
 - [Binding to a textarea](snippets/forms/binding-to-a-textarea.html)
+- [Selecting one item using radio buttons](selecting-one-item-using-radio-buttons.html)
+- [Selecting many items using checkboxes](selecting-many-items-using-checkboxes.html)
+- [Selecting items using the core-selector element](selecting-items-using-the-core-selector-element.html)
 - [Implementing simple validation](snippets/forms/implementing-simple-validation.html)
 
 ### Observing Changes
@@ -55,6 +58,11 @@ See [contributing.md](contributing.md).
 ### Events
 
 - [Using custom events](snippets/events/using-custom-events.html)
+
+### Insertion Points
+
+- [Creating an insertion point using the content tag](creating-an-insertion-point-using-the-content-tag.html)
+- [Creating insertions using the select attribute](creating-insertion-points-using-the-select-attribute.html)
 
 ### Filters
 
@@ -70,16 +78,21 @@ See [contributing.md](contributing.md).
 - [Applying styles by piercing Shadow DOM boundaries](snippets/styling-elements/applying-styles-by-piercing-shadow-dom-boundaries.html)
 - [Styling distributed nodes](snippets/styling-elements/styling-distributed-nodes.html)
 
+### Layout attributes
+
+- [Using layout attributes](layout-attributes/using-layout-attributes.html)
+- [Using flex](layout-attributes/using-flex.html)
+- [Nesting flex layouts](layout-attributes/nesting-flex-layouts.html)
 
 ### Core Elements
 
-Snippets dealing with
+Snippets using
 [Polymer core elements](http://www.polymer-project.org/docs/elements/core-elements.html).
 
 #### Core Toolbar
 
-[Using core-toolbar](snippets/core-elements/core-toolbar/using-core-toolbar.html)
-[Adding a menu button](snippets/core-elements/core-toolbar/adding-a-menu-button.html)
-[Adding button rows](snippets/core-elements/core-toolbar/adding-button-rows.html)
-[Changing toolbar size](snippets/core-elements/core-toolbar/changing-toolbar-size.html)
+- [Using core-toolbar](snippets/core-elements/core-toolbar/using-core-toolbar.html)
+- [Adding a menu button](snippets/core-elements/core-toolbar/adding-a-menu-button.html)
+- [Adding button rows](snippets/core-elements/core-toolbar/adding-button-rows.html)
+- [Changing toolbar size](snippets/core-elements/core-toolbar/changing-toolbar-size.html)
 
