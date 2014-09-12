@@ -1,0 +1,60 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Nesting Flex Layouts
+
+Shows the use of nested elements, each with their own layout attributes.
+
+Consider the following example:
+
+    <div flex layout horizontal>
+      <div flex layout vertical>
+        <div>Section 1</div>
+        <div>Section 2</div>
+        <div>Section 3</div>
+      </div>
+      <div flex>Col</div>
+    </div>
+
+The parent div lays out its children out horizontally, while each immediate
+child will lay its children out vertically.
+
+Read the
+[official documentation for layout attributes](http://www.polymer-project.org/docs/polymer/layout-attrs.html).
+
+[jsbin](http://jsbin.com/nirito/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element" noscript layout vertical>
+  <template>
+    <style>
+      div {
+        background: lightgreen;
+        border: 1px dotted white;
+      }
+    </style>
+    <div layout horizontal id="header">
+      <div>Menu1</div>
+      <div flex>Menu2</div>
+      <div>Menu3</div>
+    </div>
+    <div flex layout horizontal id="main">
+      <div flex layout vertical>
+        <div>Section 1</div>
+        <div>Section 2</div>
+        <div>Section 3</div>
+      </div>
+      <div flex>Col</div>
+    </div>
+    <div id="footer">Footer</div>
+  </template>
+</polymer-element>

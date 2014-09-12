@@ -1,0 +1,98 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Selecting Many Items using Checkboxes
+
+Shows use of checkboxes to select many items from a small collection of items.
+
+The snippet maintains an `items` collection with colors as keys, and
+corresponding boolean `checked` values that track whether a color is selected:
+
+    Polymer({
+      created: function() {
+        this.items = {
+          red: {checked: false},
+          green: {checked: true},
+          blue: {checked: false}
+        };
+        this.colors = Object.keys(this.items);
+        this.updateSelectedColors();
+      },
+      updateSelectedColors: function() {
+        this.selectedColors = this.colors.filter(function(color) {
+          return this.items[color].checked;
+        }.bind(this));
+      }
+    });
+
+The `updateSelectedColors()` function sets the value of `selectedColors`, an
+array that holds the colors with corresponding `checked` status of `true`.
+
+The `value` of each checkbox binds to an `items` key, and each checkbox's
+`checked` status binds to an `item`'s `checked` value:
+
+  <template>
+    <div on-change="{{updateSelectedColors}}">
+      <template repeat="{{color in colors}}">
+        <label>{{color}}
+          <input type="checkbox"
+                 value="{{color}}"
+                 checked="{{items[color].checked}}">
+        </label>
+      </template>
+    </div>
+    ...
+  </template>
+
+Checking a checkbox causes on `on-change` event to fire. This triggers
+the `updateSelectedColors()` handler, which updates `selectedColors`.
+
+
+[jsbin](http://jsbin.com/fesude/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div on-change="{{updateSelectedColors}}">
+      <template repeat="{{color in colors}}">
+        <label>{{color}}
+          <input type="checkbox"
+                 value="{{color}}"
+                 checked="{{items[color].checked}}">
+        </label>
+      </template>
+    </div>
+    <hr>
+    <template repeat="{{color in selectedColors}}">
+      <div>{{color}}</div>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      created: function() {
+        this.items = {
+          red: {checked: false},
+          green: {checked: true},
+          blue: {checked: false}
+        };
+        this.colors = Object.keys(this.items);
+        this.colors.sort();
+        this.updateSelectedColors();
+      },
+      updateSelectedColors: function() {
+        this.selectedColors = this.colors.filter(function(color) {
+          return this.items[color].checked;
+        }.bind(this));
+      }
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,83 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Applying styles by piercing Shadow DOM boundaries
+
+Shows how to use the `::shadow` pseudo-element and the `/deep/` combinator
+to style elements inside another element's Shadow DOM.
+
+When you define styles in `<head>` of your main page,
+those styles do not penetrate the element's shadow boundaries. For that, you
+must use the `::shadow` pseudo-element or the `/deep/` combinator.
+For example:
+
+    <style shim-shadowdom>
+      body /deep/ h2 {
+        color: green;
+      }
+      my-element::shadow p {
+        color: red;
+      }
+    </style>
+
+The style definition using `/deep/` ignores *all* shadow boundaries for `<h2>`
+elements. The style definition using `::shadow` pierces only the shadow
+boundary of `<my-element>` to make all `<p>` elements in it red. The
+`shim-shadowdom` argument helps Polymer efficiently shim styles in polyfills
+used in browswers that haven't natively implemented Shadow DOM.
+
+Assume you have the following HTML in the `<body>`:
+
+    <my-element></my-element>
+    <h2>Heading outside my-element</h2>
+
+This generates the following composed tree:
+
+    <my-element>
+      <h2>Heading inside my-element</h2>
+      <p>Para inside my-element</p>
+    <child-element>
+      <h2>Heading inside child-element</h2>
+    </child-element>
+    </my-element>
+    <h2>Heading outside my-element</h2>
+
+Using `/deep/` makes _all_ `<h2> elements green, even the `<h2>` inside
+`<child-element>` and `<h2>` outside `<my-element>`.
+
+ Using `::shadow` makes the `<p>` element red.
+
+Read more about
+[using `/deep/` and `::shadow` in your styles](http://www.polymer-project.org/articles/styling-elements.html#style-fromoutside).
+
+[jsbin](http://jsbin.com/xuwogu/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="child-element" noscript>
+  <template>
+    <h2>Heading inside child-element</h2>
+  </template>
+</polymer-element>
+
+<polymer-element name="my-element" noscript>
+  <template>
+    <style>
+      :host {
+        display: block;
+        border: 1px solid black;
+      }
+    </style>
+    <h2>Heading inside my-element</h2>
+    <p>Para inside my-element</p>
+    <child-element></child-element>
+  </template>
+</polymer-element>

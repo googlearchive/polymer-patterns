@@ -1,0 +1,48 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Selecting One Item from Many using Radio Buttons
+
+Shows the use of radio buttons to select a single item from a small collection
+of items.
+
+The snippet binds the `value` attribute of an `<input>` to an item in the
+`colors` array.
+
+When you select a radio, the `on-change` action triggers the
+`updateSelectedColor` handler, which stores the value of the selected color in
+`selectedColor`.
+
+[jsbin](http://jsbin.com/mejude/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <div on-change="{{updateSelectedColor}}">
+      <template repeat="{{color in colors}}">
+        <label>{{color}}
+          <input type="radio" name="colors" value="{{color}}">
+        </label>
+      </template>
+    </div>
+    <div>{{selectedColor}}</div>
+  </template>
+  <script>
+    Polymer({
+      colors: ['red', 'green', 'blue'],
+      selectedColor: '',
+      updateSelectedColor: function(e, detail, sender) {
+        this.selectedColor = e.target.value;
+      }
+    });
+  </script>
+</polymer-element>

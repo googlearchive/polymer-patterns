@@ -12,42 +12,69 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script>
   mocha.setup({ui: 'tdd', slow: 1000, timeout: 5000, htmlbase: ''});
 
+
   htmlSuite('basics', function() {
-    htmlTest('binding-to-a-complex-object.html');
-    htmlTest('binding-to-a-native-html-element.html');
-    htmlTest('binding-to-a-property.html');
-    htmlTest('binding-to-a-style.html');
-    htmlTest('using-bind-to-create-a-single-template-instance.html');
+    htmlTest('basics/binding-to-a-complex-object.html');
+    htmlTest('basics/binding-to-a-native-html-element.html');
+    htmlTest('basics/binding-to-a-property.html');
+    htmlTest('basics/binding-to-a-style.html');
+    htmlTest('basics/using-bind-to-create-a-single-template-instance.html');
+    htmlTest('basics/finding-shadow-dom-elements.html');
+    htmlTest('basics/using-a-computed-property.html');
+    htmlTest('basics/creating-a-one-time-binding.html');
   });
 
   htmlSuite('control flow', function() {
-    htmlTest('using-conditional-templates.html');
-    htmlTest('conditionally-hiding-an-element.html');
-    htmlTest('getting-the-iteration-index-when-looping-over-a-collection.html');
-    htmlTest('looping-over-a-collection-using-iterative-templates.html');
-    htmlTest('using-template-repeat-with-a-tr-or-an-option.html');
+    htmlTest('control-flow/using-conditional-templates.html');
+    htmlTest('control-flow/conditionally-hiding-an-element.html');
+    htmlTest('control-flow/getting-the-iteration-index-when-looping-over-a-collection.html');
+    htmlTest('control-flow/looping-over-a-collection-using-iterative-templates.html');
+    htmlTest('control-flow/using-template-repeat-with-a-tr-or-an-option.html');
     htmlTest('using-published-values-in-a-repeated-template.html');
   });
 
   htmlSuite('events', function() {
-    htmlTest('using-custom-events.html');
+    htmlTest('events/using-custom-events.html');
+  });
+
+  htmlSuite('insertion-points', function() {
+    htmlTest('insertion-points/creating-an-insertion-point-using-the-content-tag.html');
+    htmlTest('insertion-points/creating-insertion-points-using-the-select-attribute.html');
   });
 
   htmlSuite('filters', function() {
-    htmlTest('using-custom-filters.html');
+    htmlTest('filters/using-custom-filters.html');
   });
 
   htmlSuite('forms', function() {
-    htmlTest('binding-a-boolean-property-to-a-checkbox.html');
-    htmlTest('binding-to-a-text-input.html');
-    htmlTest('binding-to-a-textarea.html');
-    htmlTest('implementing-simple-validation.html');
+    htmlTest('forms/binding-a-boolean-property-to-a-checkbox.html');
+    htmlTest('forms/binding-to-a-text-input.html');
+    htmlTest('forms/binding-to-a-textarea.html');
+    htmlTest('forms/implementing-simple-validation.html');
+    htmlTest('forms/selecting-many-items-using-checkboxes.html');
+    htmlTest('forms/selecting-one-item-using-radio-buttons.html');
+    htmlTest('forms/selecting-items-using-the-core-selector-element.html');
   });
 
   htmlSuite('observing changes', function() {
-    htmlTest('observing-changes-to-light-dom-children.html');
-    htmlTest('observing-property-changes.html');
-    htmlTest('watching-for-changes-to-a-nested-object.html');
+    htmlTest('observing-changes/observing-changes-to-light-dom-children.html');
+    htmlTest('observing-changes/observing-property-changes.html');
+    htmlTest('observing-changes/watching-for-changes-to-a-nested-object.html');
+  });
+
+  htmlSuite('styling-elements', function() {
+    htmlTest('styling-elements/defining-styles-inside-a-polymer-element.html');
+    htmlTest('styling-elements/programmatically-changing-the-styles-of-an-element.html');
+    htmlTest('styling-elements/using-host-with-a-css-selector.html');
+    htmlTest('styling-elements/applying-styles-by-piercing-shadow-dom-boundaries.html');
+    htmlTest('styling-elements/styling-distributed-nodes.html');
+    htmlTest('styling-elements/using-host-context-to-theme-an-element.html');
+  });
+
+  htmlSuite('layout attributes', function() {
+    htmlTest('layout-attributes/using-layout-attributes.html');
+    htmlTest('layout-attributes/using-flex.html');
+    htmlTest('layout-attributes/nesting-flex-layouts.html');
   });
 
   htmlSuite('core-elements/core-toolbar', function() {

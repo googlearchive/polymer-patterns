@@ -1,0 +1,72 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+
+# Using `:host-context` to theme an element
+
+Shows how to use the `:host-context` pseudo class with a selector that is matched
+against an ancestor element.  This is a convenient way to 'theme' a Polymer
+element.
+
+The snippet defines an element with the following styles:
+
+    :host-context(.red) {
+      color: red;
+    }
+    :host-context(.blue) {
+      color: blue;
+    }
+
+Styles defined in the `:host-context(.red)` block apply only if `<my-element>`
+has an ancestor with the class 'red', and the styles in the
+`:host-context(.blue)` apply only if `<my-element>` has an ancestor with the
+class 'blue'.
+
+Consider the following use of `<my-element>`:
+
+    <div>
+      <my-element></my-element>
+    </div>
+
+    <div class="red">
+      <my-element></my-element>
+    </div>
+
+    <div class="blue">
+      <div>
+        <my-element></my-element>
+      </div>
+    </div>
+
+Inside `<div class="red">`, `<my-element>`'s text is red, and inside
+`<div class="blue">`, it is blue. Inside the first `<div>`, the styles defined
+using `:host-context` do not apply.
+
+Read more about
+[theming an element](http://www.polymer-project.org/articles/styling-elements.html#theming-an-element).
+
+[jsbin](http://jsbin.com/rugego/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element" noscript>
+  <template>
+    <style>
+      :host-context(.red) {
+        color: red;
+      }
+      :host-context(.blue) {
+        color: blue;
+      }
+    </style>
+    <p>Inside my-element</p>
+  </template>
+</polymer-element>

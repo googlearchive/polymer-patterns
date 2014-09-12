@@ -1,0 +1,57 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Creating an Insertion Point using the Content Tag
+
+Shows how to implement element composition by creating an **insertion point**.
+
+Use the `<content>` tag to declare an insertion point:
+
+    <template>
+      <p>Shadow DOM</p>
+      <content></content>
+      <p>Shadow DOM again</p>
+    </template>
+
+The insertion point selects and presents content from the shadow host. Nodes
+inserted using `<content>` are called **distributed nodes**.
+
+Consider this use of the element in this snippet:
+
+    <my-element><i>Distributed node</i></my-element>
+
+This creates the following composed tree:
+
+    <p>Shadow DOM</p>
+    <i>Distributed node</i>
+    <p>Shadow DOM again</p>
+
+Note that the distributed nodes are correctly placed within the shadow DOM
+nodes.
+
+Read more about
+[insertion points](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/#toc-separation-separate)
+on html5rocks.
+
+Read about
+[insertion points in the Shadow DOM spec](http://www.w3.org/TR/shadow-dom/#insertion-points).
+
+[jsbin](http://jsbin.com/zunagu/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element" noscript>
+  <template>
+    <p>Shadow DOM</p>
+    <content></content>
+    <p>Shadow DOM again</p>
+  </template>
+</polymer-element>
