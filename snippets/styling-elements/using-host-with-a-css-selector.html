@@ -1,0 +1,63 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+
+# Using `:host` with a CSS selector
+
+Shows how to use `:host(<selector>)` to apply styles to instances of an element
+that match a selector.
+
+The snippet defines the following styles:
+
+    :host {
+      color: green;
+    }
+    :host(.red) {
+      color: red;
+    }
+    :host(.blue) {
+      color: blue;
+    }
+
+The first `:host` block defines styles that apply to all `<my-element>`s. The
+`:host(.red)` block defines styles for `<my-element>`s with the class 'red',
+and the `:host(.blue)` block defines styles my `<my-element>`s with the class
+`blue`.
+
+Assume that `<my-element>` is used like this:
+
+    <my-element></my-element>
+    <my-element class="red"></my-element>
+    <my-element class="blue"></my-element>
+
+The first `<my-element>` is green (the default color), the second `<my-element>`
+is red, and the last `<my-element>` is blue.
+
+[jsbin](http://jsbin.com/ruyepu/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element" noscript>
+  <template>
+    <style>
+      :host {
+        color: green;
+      }
+      :host(.red) {
+        color: red;
+      }
+      :host(.blue) {
+        color: blue;
+      }
+    </style>
+    <p>Inside my-element</p>
+  </template>
+</polymer-element>

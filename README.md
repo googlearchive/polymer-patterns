@@ -1,6 +1,6 @@
 # Polymer Snippets
 
-Small, useful, snippets/samples that show how to do things the Polymer way.
+Small, useful snippets/samples that show how to do things the Polymer way.
 
 ## Setup
 
@@ -59,7 +59,6 @@ See the [contribution guide](CONTRIBUTING.md).
 
 - [Using custom events](snippets/events/using-custom-events.html)
 
-
 ### Insertion Points
 
 - [Creating an insertion point using the content tag](creating-an-insertion-point-using-the-content-tag.html)
@@ -68,6 +67,16 @@ See the [contribution guide](CONTRIBUTING.md).
 ### Filters
 
 - [Using custom filters](snippets/filters/using-custom-filters.html)
+
+### Styling Elements
+
+- [Defining styles inside a Polymer element](snippets/styling-elements/defining-styles-inside-a-polymer-element.html)
+- [Programmatically changing the styles of an element](snippets/styling-elements/programmatically-changing-the-styles-of-an-element.html)
+- [Using :host with a CSS selector](snippets/styling-elements/using-host-with-a-css-selector.html)
+- [Using :host with pseudo classes](snippets/styling-elements/using-host-with-pseudo-classes.html)
+- [Using host-context to theme an element](snippets/styling-elements/using-host-context-to-theme-an-element.html)
+- [Applying styles by piercing Shadow DOM boundaries](snippets/styling-elements/applying-styles-by-piercing-shadow-dom-boundaries.html)
+- [Styling distributed nodes](snippets/styling-elements/styling-distributed-nodes.html)
 
 ### Layout attributes
 

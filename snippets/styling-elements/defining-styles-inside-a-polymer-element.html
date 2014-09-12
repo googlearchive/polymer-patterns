@@ -1,0 +1,87 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Defining styles inside a Polymer element
+
+Shows how to set the style properties of a Polymer element from within the
+element.
+
+To style the internal markup of an element, include a `<link>` for an external
+stylesheet or a `<style>` tag inside the topmost `<template>`. Use `:host` to
+define styles that apply to the element itself:
+
+    <template>
+      <style>
+        :host {
+          /* Note: by default elements are always display:inline. */
+          display: block;
+          color: blue;
+        }
+        p {
+          color: red;
+        }
+      </style>
+      ...
+      <content></content>
+    </template>
+
+If `<my-element>` is used in this way:
+
+    <my-element>
+      <p>Distributed para</p>
+    </my-element>
+    <p>Para outside the element</p>
+
+It generates the following composed tree:
+
+    <my-element>
+      <h2>Blue heading</h2>
+      <p>Red para inside element</p>
+      <p>Distributed para</p>
+    <my-element>
+    <p>Para outside the element</p>
+
+- Both the `<h2>` inside `<my-element>` and the distributed `<p>` inserted
+through `<content>` get their blue color from the `color` definition in the
+`:host` block.
+
+- The `color: blue` defined inside the `:host` block applies both to the `<h2>`
+inside `<my-element>` and the distributed `<p>` inserted through the
+`<content>` tag.
+
+- The `color: red` definition _outside_ the `:host` block applies to the
+`<p>` inside `<my-element>`.
+
+- Since styles defined in an element scope to that element, the `<p>` outside
+`<my-element>` is unaffected by the styles defined within it.
+
+[jsbin](http://jsbin.com/jayuq/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element" noscript>
+  <template>
+    <style>
+      :host {
+        /* Note: by default elements are always display:inline. */
+        display: block;
+        color: blue;
+      }
+      /* Does not apply to distributed nodes. */
+      p {
+        color: red;
+      }
+    </style>
+    <h2>Blue heading</h2>
+    <p>Red para inside element</p>
+    <content></content>
+  </template>
+</polymer-element>
