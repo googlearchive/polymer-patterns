@@ -59,6 +59,12 @@ See [contributing.md](contributing.md).
 
 - [Using custom events](snippets/events/using-custom-events.html)
 
+
+### Insertion Points
+
+- [Creating an insertion point using the content tag](creating-an-insertion-point-using-the-content-tag.html)
+- [Creating insertions using the select attribute](creating-insertion-points-using-the-select-attribute.html)
+
 ### Filters
 
 - [Using custom filters](snippets/filters/using-custom-filters.html)
