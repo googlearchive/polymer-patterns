@@ -45,7 +45,7 @@ See [contributing.md](contributing.md).
 - [Binding to a text input](snippets/forms/binding-to-a-text-input.html)
 - [Binding to a textarea](snippets/forms/binding-to-a-textarea.html)
 - [Selecting one item using radio buttons](selecting-one-item-using-radio-buttons.html)
-- [Selecting manu items using checkboxes](selecting-many-items-using-checkboxes.html)
+- [Selecting many items using checkboxes](selecting-many-items-using-checkboxes.html)
 - [Selecting items using the core-selector element](selecting-items-using-the-core-selector-element.html)
 - [Implementing simple validation](snippets/forms/implementing-simple-validation.html)
 
@@ -63,22 +63,21 @@ See [contributing.md](contributing.md).
 
 - [Using custom filters](snippets/filters/using-custom-filters.html)
 
+### Layout attributes
+
+- [Using layout attributes](layout-attributes/using-layout-attributes.html)
+- [Using flex](layout-attributes/using-flex.html)
+- [Nesting flex layouts](layout-attributes/nesting-flex-layouts.html)
+
 ### Core Elements
 
 Snippets using
 [Polymer core elements](http://www.polymer-project.org/docs/elements/core-elements.html).
 
-#### core-toolbar
-
--[Using core-toolbar](snippets/core-elements/core-toolbar/using-core-toolbar.html)
--[Changing toolbar size](snippets/core-elements/core-toolbar/changing-toolbar-size.html)
--[Adding a menu button](snippets/core-elements/core-toolbar/adding-a-menu-button.html)
--[Adding button rows](snippets/core-elements/core-toolbar/adding-button-rows.html)
-
 #### Core Toolbar
 
-[Using core-toolbar](snippets/core-elements/core-toolbar/using-core-toolbar.html)
-[Adding a menu button](snippets/core-elements/core-toolbar/adding-a-menu-button.html)
-[Adding button rows](snippets/core-elements/core-toolbar/adding-button-rows.html)
-[Changing toolbar size](snippets/core-elements/core-toolbar/changing-toolbar-size.html)
+- [Using core-toolbar](snippets/core-elements/core-toolbar/using-core-toolbar.html)
+- [Adding a menu button](snippets/core-elements/core-toolbar/adding-a-menu-button.html)
+- [Adding button rows](snippets/core-elements/core-toolbar/adding-button-rows.html)
+- [Changing toolbar size](snippets/core-elements/core-toolbar/changing-toolbar-size.html)
 
