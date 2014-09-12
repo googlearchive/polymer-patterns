@@ -16,7 +16,7 @@ Small, useful, snippets/samples that show how to do things the Polymer way.
 
 ## Contributing
 
-See [contributing.md](contributing.md).
+See the [contribution guide](CONTRIBUTING.md).
 
 ## Table of Contents
 
