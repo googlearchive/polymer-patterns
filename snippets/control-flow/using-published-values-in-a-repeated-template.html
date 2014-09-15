@@ -10,8 +10,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!--
 # Using Published Values in a Iterative (Repeated) Template
 
-Shows how to refer to a published value on a Polymer element contained in
-a `<template repeat="{{...}}">` within a parent Polymer element.
+Shows how you can refer to values published from Polymer elements created inside a
+`<template repeat="{{...}}">` loop. This allows you to refer to the published values
+elsewhere in the template, such as in a related `<template if="{{...}}">`.
 
     <template repeat="{{ elementName in elementNames }}">
       <div>
