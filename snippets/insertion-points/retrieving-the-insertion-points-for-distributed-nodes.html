@@ -1,0 +1,87 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Retrieving the insertion points for distributed nodes
+
+Shows how to obtain insertion points for distributed nodes when there
+multiple `<content>` tags or multiple layers of Shadow DOM (e.g. when an element
+extends another element).
+
+
+To understand how to use the `<content>` tag, see
+[Creating an insertion point using the `content` tag](creating-an-insertion-point-using-the-content-tag.html))
+and
+[Creating insertion points using the `select` attribute](creating-insertion-points-using-the-select-attribute.html)).
+
+Also see this (Shadow DOM visualizer)[http://html5-demos.appspot.com/shadowdom-visualizer].
+
+It is a common pattern to use multiple `<content>` tags with `select`
+attributes to create multiple entry points for distributed nodes. For example,
+`<my-element>` defines two such entry points:
+
+    <template>
+      <content select=".crucial"></content>
+      <content select=".ordinary"></content>
+      ...
+    </template>
+
+You may use `<my-element>` in this way:
+
+    <my-element>
+      <div class="ordinary">ordinary</div>
+      <div class="crucial">crucial</div>
+    </my-element>
+
+In this case, Polymer inserts the `<div>` with the 'crucial' class into
+the first `<content>` and the `<div>` with the 'ordinary' class into the second
+`<content>`.
+
+Use `getDestinationInsertionPoints()` to programmatically determine the
+insertion points a node is distributed into:
+
+    node.getDestinationInsertionPoints();
+
+Read more about
+[insertion points and `getDestinationInsertionPoints()`](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-301/#toc-distributed-nodes).
+
+[jsbin](http://jsbin.com/lesago/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    <content select=".crucial"></content>
+    <content select=".ordinary"></content>
+    <button on-tap="{{showNodesAndEntryPoints}}">
+      Show nodes and entry points
+    </button>
+    <template repeat="{{el in nodesAndEntryPoints}}">
+      <div>{{el}}</div>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      created: function() {
+        this.nodesAndEntryPoints = [];
+      },
+      showNodesAndEntryPoints: function() {
+        this.nodesAndEntryPoints = [];
+        for (var i = 0; i < this.children.length; i++) {
+          this.nodesAndEntryPoints.push(
+              this.children[i].outerHTML +
+              ' ------> ' +
+              this.children[i].getDestinationInsertionPoints()[0].outerHTML
+          );
+        }
+      }
+    });
+  </script>
+</polymer-element>
