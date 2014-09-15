@@ -71,7 +71,7 @@ Using `this.children` only gets you _potentially_ distributed nodes. Using
   <script>
     Polymer({
       created: function() {
-        nodes: [];
+        this.nodes = [];
       },
       showDistributedNodes: function() {
         this.getNodes(this.$.crucial.getDistributedNodes());
