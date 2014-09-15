@@ -63,6 +63,8 @@ See the [contribution guide](CONTRIBUTING.md).
 
 - [Creating an insertion point using the content tag](creating-an-insertion-point-using-the-content-tag.html)
 - [Creating insertions using the select attribute](creating-insertion-points-using-the-select-attribute.html)
+- [Accessing the DOM inside a content tag](accessing-the-dom-inside-a-content-tag.html)
+- [Retrieving the insertion points for distributed nodes](retrieving-the-insertion-points-for-distributed-nodes.html)
 
 ### Filters
 
