@@ -10,20 +10,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!--
 # Accessing the DOM inside a `content` tag
 
-Shows how to access the distributed nodes inserted into an element's DOM through
-the `<content>` tag.
+Shows how to access nodes distributed into an element's shadow DOM using the
+`<content>` tag.
 
-To understand how to use the `<content>` tag to insert distributed nodes
-into an element, see
+To understand how to use the `<content>` tag
+see
 [Creating an insertion point using the `content` tag](creating-an-insertion-point-using-the-content-tag.html))
 and
 [Creating insertion points using the `select` attribute](creating-insertion-points-using-the-select-attribute.html)).
 
-As the latter shows, not every node passed as a child to a Polymer element gets
-inserted into the element's DOM. To get the nodes that are inserted, call
-`getDistributedNodes()` on a `<content>` tag in a Polymer element. For example,
-you can get distributed nodes inserted through the `<content>` tag in
-`<my-element>` (with an `id` of 'crucial') like this:
+Also see this (Shadow DOM visualizer)[http://html5-demos.appspot.com/shadowdom-visualizer].
+
+Not every node passed as a child to a Polymer element gets
+distributed into the element's DOM. To get the nodes that are distributed, call
+`getDistributedNodes()` on a `<content>` tag in a Polymer element.
+
+For example, `<my-element>` let's you in distribute nodes with `class` 'crucial':
+
+    <content id="crucial" select=".crucial"></content>
+
+You can get the nodes distributed through the above `<content>` tag
+like this:
 
     this.$.crucial.getDistributedNodes();
 
@@ -38,17 +45,14 @@ Consider the case when  you use `<my-element>` in this way:
     </my-element>
 
 Using `this.$.crucial.getDistributedNodes()` returns the only `<p>` node
-inserted through the `<content>` tag:
+distributed through the `<content>` tag:
 
     <p class="crucial">Crucial distributed para</p>
 
-Using `this.children` returns both `<p>` nodes:
+Using `this.children` returns both `<p>` nodes.
 
-    <p>A para</p>
-    <p class="crucial">Crucial distributed para</p>
-
-Avoid using `this.children` to access distributed nodes. Always use
-`getDistributedNodes()`.
+Using `this.children` only gets you _potentially_ distributed nodes. Using
+`getDistributedNodes()` gets you the nodes that were _actually_ distributed.
 
 [jsbin](http://jsbin.com/juyeme/edit)
 -->

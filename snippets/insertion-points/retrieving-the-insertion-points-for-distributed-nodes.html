@@ -8,16 +8,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <!--
-# Getting the insertion points for distributed nodes
+# Retrieving the insertion points for distributed nodes
 
-Shows how to obtain insertion points for distributed nodes when an element has
-multiple `<content>` tags.
+Shows how to obtain insertion points for distributed nodes when there
+multiple `<content>` tags or multiple layers of Shadow DOM (e.g. when an element
+extends another element).
 
-To understand how to use the `<content>` tag to insert distributed nodes
-into an element, see
+
+To understand how to use the `<content>` tag, see
 [Creating an insertion point using the `content` tag](creating-an-insertion-point-using-the-content-tag.html))
 and
 [Creating insertion points using the `select` attribute](creating-insertion-points-using-the-select-attribute.html)).
+
+Also see this (Shadow DOM visualizer)[http://html5-demos.appspot.com/shadowdom-visualizer].
 
 It is a common pattern to use multiple `<content>` tags with `select`
 attributes to create multiple entry points for distributed nodes. For example,
@@ -29,7 +32,7 @@ attributes to create multiple entry points for distributed nodes. For example,
       ...
     </template>
 
-You can use `<my-element>` in this way:
+You may use `<my-element>` in this way:
 
     <my-element>
       <div class="ordinary">ordinary</div>
@@ -41,7 +44,7 @@ the first `<content>` and the `<div>` with the 'ordinary' class into the second
 `<content>`.
 
 Use `getDestinationInsertionPoints()` to programmatically determine the
-insertion points for distributed nodes:
+insertion points a node is distributed into:
 
     node.getDestinationInsertionPoints();
 
