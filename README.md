@@ -44,9 +44,9 @@ See the [contribution guide](CONTRIBUTING.md).
 - [Binding a boolean property to a checkbox](snippets/forms/binding-a-boolean-property-to-a-checkbox.html)
 - [Binding to a text input](snippets/forms/binding-to-a-text-input.html)
 - [Binding to a textarea](snippets/forms/binding-to-a-textarea.html)
-- [Selecting one item using radio buttons](selecting-one-item-using-radio-buttons.html)
-- [Selecting many items using checkboxes](selecting-many-items-using-checkboxes.html)
-- [Selecting items using the core-selector element](selecting-items-using-the-core-selector-element.html)
+- [Selecting one item using radio buttons](snippets/forms/selecting-one-item-using-radio-buttons.html)
+- [Selecting many items using checkboxes](snippets/forms/selecting-many-items-using-checkboxes.html)
+- [Selecting items using the core-selector element](snippets/forms/selecting-items-using-the-core-selector-element.html)
 - [Implementing simple validation](snippets/forms/implementing-simple-validation.html)
 
 ### Observing Changes
@@ -82,9 +82,9 @@ See the [contribution guide](CONTRIBUTING.md).
 
 ### Layout attributes
 
-- [Using layout attributes](layout-attributes/using-layout-attributes.html)
-- [Using flex](layout-attributes/using-flex.html)
-- [Nesting flex layouts](layout-attributes/nesting-flex-layouts.html)
+- [Using layout attributes](snippets/layout-attributes/using-layout-attributes.html)
+- [Using flex](snippets/layout-attributes/using-flex.html)
+- [Nesting flex layouts](snippets/layout-attributes/nesting-flex-layouts.html)
 
 ### Core Elements
 
