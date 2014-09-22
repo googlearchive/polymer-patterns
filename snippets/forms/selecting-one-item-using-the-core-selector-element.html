@@ -1,0 +1,64 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Selecting one item using the Core Selector element
+
+Shows how to select item from a collection using the `<core-selector>` Polymer element.
+
+You can use `<core-selector>` for managing selection state and configure
+it by passing arguments. For example, you can set and access the selected
+item by using `<core-selector>`'s `selected` property:
+
+    <core-selector id="selector" selected="1">
+      <template repeat="{{color in colors}}">
+        <div value="{{color}}">{{color}}</div>
+      </template>
+    </core-selector>
+
+You can get the value of `selected` (the index of the selected items from `colors`) in your template like this:
+
+    <div>{{colors[$.selector.selected]}}</div>
+
+Polymer assigns a `.core-selected` class to selected items, and you can define
+styles for this class. You can also configure the name to something other than
+`.core-selected`.
+
+Read the
+[official documentation for `core-selector`](http://www.polymer-project.org/docs/elements/core-elements.html#core-selector).
+
+[jsbin for single select](http://jsbin.com/hamuf/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+<link rel="import" href="../../components/core-selector/core-selector.html">
+
+<polymer-element name="my-element">
+  <template>
+    <style>
+      .core-selected {
+        font-weight: bold;
+      }
+    </style>
+    <core-selector id="selector" selected="1">
+      <template repeat="{{color in colors}}">
+        <div value="{{color}}">{{color}}</div>
+      </template>
+    </core-selector>
+    <hr>
+    <div>{{colors[$.selector.selected]}}</div>
+  </template>
+  <script>
+    Polymer({
+      created: function() {
+        this.colors = ['red', 'green', 'blue'];
+      }
+    });
+  </script>
+</polymer-element>
