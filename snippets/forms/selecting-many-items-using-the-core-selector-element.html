@@ -8,12 +8,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <!--
-# Selecting Items using the Core Selector Element
+# Selecting many items using the Core Selector element
 
-Shows how to select items using the `<core-selector>` Polymer element.
+Shows how to select multiple items using the `<core-selector>` Polymer element.
 
-You can use `<core-selector>` for managing selection state and configure
-it by passing arguments:
+See [Selecting one item using the Core Selector element](selecting-one-item-using-the-core-selector-element.html)
+for an introduction to `<core-selector>'.
+
+Use `<core-selector>` with the `multi` argument to select
+mulitple values. Use the `valueattr` argument to specify the attribute to be
+used for 'selected' attribute (without `valueattr`, `<core-selector>` uses the
+index of the selected items).  This sample uses the `value` attribute of the
+child `<div>` elements for the `selected` attribute.
 
     <core-selector id="cs"
                    selected="{{selected}}"
@@ -23,38 +29,6 @@ it by passing arguments:
         <div value="{{color}}">{{color}}</div>
       </template>
     </core-selector>
-
-- the `multi` argument allows for the selection of mulitple values
-- the `selected` argument pre-selects a value
-- the `valueattr` argument lets you specify the attribute to use for
-selection.  This snippet uses the `value` attribute of the child `<div>`
-elements.
-
-Access the selected items by using `<core-selector>`'s `selected`
-property:
-
-    <template repeat="{{color in $.cs.selected}}">
-      <div>{{color}}</div>
-    </template>
-
-Polymer assigns a `.core-selected` class to selected items, and you can define
-styles for this class. You can also configure the name to something other than
-`.core-selected`.
-
-### Allowing only a single item to be selected
-
-This snippet uses `<core-selector>` to select multiple items. To restrict
-selection to a single item, remove the `multi` attribute, and delete the
-following:
-
-    <template repeat="{{color in $.cs.selected}}">
-      <div>{{color}}</div>
-    </template>
-
-Without the `multi` argument, `<core-selector>`'s `selected` property
-returns a single value, not an array. You can get that value like this:
-
-    <div>{{$.cs.selected}}</div>
 
 Read the
 [official documentation for `core-selector`](http://www.polymer-project.org/docs/elements/core-elements.html#core-selector).
