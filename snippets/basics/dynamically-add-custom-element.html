@@ -1,0 +1,39 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+Define a custom element with an attribute. Then dynamically via script create
+an instance of that element and set the attribute. Then add that element to
+the DOM.
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<!--
+Custom element, note that the attributes must be defined by the
+polymer-element for it to be visible to the DOM's setAttributes. Also
+note the "noscript" attribute used to indicate this element does not
+contain a script section.
+-->
+<polymer-element name="my-element" attributes="greeting" noscript>
+  <template>
+    <h1>{{greeting}}</h1>
+  </template>
+</polymer-element>
+
+<!--
+Script to dynamically create instance of custom element, set its attribute
+and add it to the DOM.
+-->
+<script>
+  var dynamicEl = document.createElement("my-element");
+  dynamicEl.setAttribute("id", "my-element-id");
+  dynamicEl.setAttribute("greeting", "Hello, Good Morning.");
+  document.body.appendChild(dynamicEl);
+</script>
