@@ -33,6 +33,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     htmlTest('control-flow/using-template-repeat-with-a-tr-or-an-option.html');
   });
 
+  htmlSuite('inheritance', function() {
+    htmlTest('inheritance/extending-a-polymer-element.html');
+    htmlTest('inheritance/overriding-an-inherited-method.html');
+  });
+
   htmlSuite('events', function() {
     htmlTest('events/using-custom-events.html');
   });

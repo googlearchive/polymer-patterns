@@ -1,0 +1,78 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Overriding a extendee element method
+
+Shows how to use and extend a extendee element method from the extender
+element.
+
+Use `this.super()` in the extender element to invoke a extendee element
+method:
+
+    <polymer-element name="extendee-element" attributes="message">
+      ...
+      <script>
+        Polymer({
+          setMessage: function() {
+            this.message = 'I like Ike';
+          }
+        });
+      </script>
+    </polymer-element>
+
+    <polymer-element name="extender-element" extends="extendee-element">
+      ...
+      <script>
+        Polymer({
+          setMessage: function() {
+            this.super();
+            this.message += ', but I love Lucy.';
+          }
+        });
+      </script>
+    </polymer-element>
+
+Note: While this sample does not use this feature, you can optionally pass a
+list of arguments to `super()`. See the
+[official docs](https://www.polymer-project.org/docs/polymer/polymer.html#overriding-a-parents-methods).
+
+[jsbin](http://jsbin.com/raqoj/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="extendee-element" attributes="message">
+  <template>
+    <div>{{message}}</div>
+    <button on-tap="{{setMessage}}">Show Message</button>
+  </template>
+  <script>
+    Polymer({
+      setMessage: function() {
+        this.message = 'I like Ike';
+      }
+    });
+  </script>
+</polymer-element>
+
+<polymer-element name="extender-element" extends="extendee-element">
+  <template>
+    <shadow></shadow>
+  </template>
+  <script>
+    Polymer({
+      setMessage: function() {
+        this.super();
+        this.message += ', but I love Lucy.';
+      }
+    });
+  </script>
+</polymer-element>
+

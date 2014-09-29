@@ -39,6 +39,11 @@ See the [contribution guide](CONTRIBUTING.md).
 - [Using conditional templates](snippets/control-flow/using-conditional-templates.html)
 - [Using template repeat with a table row or an option](snippets/control-flow/using-template-repeat-with-a-tr-or-an-option.html)
 
+### Inheritance
+
+- [Extending a Polymer element](snippets/inheritance/extending-a-polymer-element.html)
+- [Overriding an inherited method](snippets/inheritance/overriding-an-inherited-method.html)
+
 ### Forms
 
 - [Binding a boolean property to a checkbox](snippets/forms/binding-a-boolean-property-to-a-checkbox.html)
