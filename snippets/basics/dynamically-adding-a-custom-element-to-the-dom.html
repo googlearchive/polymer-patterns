@@ -8,19 +8,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <!--
-Define a custom element with an attribute. Then dynamically via script create
-an instance of that element and set the attribute. Then add that element to
-the DOM.
+# Dynamically adding a Polymer element to the DOM
+
+Shows how to instantiate a Polymer element dynamically, set it's attributes,
+and insert it into the DOM.
+
+Read
+[Creating Elements](http://www.polymer-project.org/docs/start/creatingelements.html).
+
+[jsbin](http://jsbin.com/gelos/edit)
 -->
 
 <link rel="import" href="../../components/polymer/polymer.html">
 
-<!--
-Custom element, note that the attributes must be defined by the
-polymer-element for it to be visible to the DOM's setAttributes. Also
-note the "noscript" attribute used to indicate this element does not
-contain a script section.
--->
 <polymer-element name="my-element" attributes="greeting" noscript>
   <template>
     <h1>{{greeting}}</h1>
@@ -28,8 +28,10 @@ contain a script section.
 </polymer-element>
 
 <!--
-Script to dynamically create instance of custom element, set its attribute
-and add it to the DOM.
+To set an attribute on a Polymer element using setAttribute() you must declare
+it using attributes in the element definition:
+
+    <polymer-element name="my-element" attributes="greeting" noscript>
 -->
 <script>
   var dynamicEl = document.createElement("my-element");
