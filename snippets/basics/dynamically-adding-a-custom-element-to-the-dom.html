@@ -13,6 +13,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 Shows how to instantiate a Polymer element dynamically, set it's attributes,
 and insert it into the DOM.
 
+To set an attribute on a Polymer element using setAttribute() you must declare
+it using attributes in the element definition:
+
+    <polymer-element name="my-element" attributes="greeting" noscript>
+
 Read
 [Creating Elements](http://www.polymer-project.org/docs/start/creatingelements.html).
 
@@ -27,12 +32,6 @@ Read
   </template>
 </polymer-element>
 
-<!--
-To set an attribute on a Polymer element using setAttribute() you must declare
-it using attributes in the element definition:
-
-    <polymer-element name="my-element" attributes="greeting" noscript>
--->
 <script>
   var dynamicEl = document.createElement("my-element");
   dynamicEl.setAttribute("id", "my-element-id");
