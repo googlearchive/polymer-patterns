@@ -1,0 +1,81 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Overriding a superclass element method
+
+Shows how to use and extend a superclass element method from the subclass
+element.
+
+Use `this.super()` in the subclass element to invoke a superclass element
+method:
+
+    <polymer-element name="superclass-element">
+      ...
+      <script>
+        Polymer({
+          ...
+          setMessage: function() {
+            this.message = 'I like Ike';
+          }
+        });
+      </script>
+    </polymer-element>
+
+    <polymer-element name="subclass-element" extends="superclass-element">
+      ...
+      <script>
+        Polymer({
+          ...
+          setMessage: function() {
+            this.super();
+            this.message += ', but I love Lucy.';
+          }
+        });
+      </script>
+    </polymer-element>
+
+Note: While this sample does not use this feature, you can optionally pass a list of
+arguments to `super()`.
+
+[jsbin](http://jsbin.com/raqoj/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="superclass-element">
+  <template>
+    <div>{{message}}</div>
+    <button on-tap="{{setMessage}}">Show Message</button>
+  </template>
+  <script>
+    Polymer({
+      message: '',
+      setMessage: function() {
+        this.message = 'I like Ike';
+      }
+    });
+  </script>
+</polymer-element>
+
+<polymer-element name="subclass-element" extends="superclass-element">
+  <template>
+    <shadow></shadow>
+  </template>
+  <script>
+    Polymer({
+      message: '',
+      setMessage: function() {
+        this.super();
+        this.message += ', but I love Lucy.';
+      }
+    });
+  </script>
+</polymer-element>
+

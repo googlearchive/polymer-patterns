@@ -1,0 +1,74 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Extending a Polymer element
+
+Shows how to extend an existing Polymer element.
+
+Use the `extends` argument when defining the subclass element, giving it the
+name of the element you are extending. This lets your subclass element
+inherit from and data bind to the superclass element's properties and methods:
+
+    <polymer-element name="superclass-element">
+      ...
+    </polymer-element>
+
+    <polymer-element name="subclass-element" extends="superclass-element">
+      ...
+    </polymer-element>
+
+Include a `<shadow></shadow>` element in your subclass element `<template>`
+where you want the Shadow DOM from the superclass to appear:
+
+  <polymer-element name="subclass-element" extends="superclass-element">
+    <template>
+      <div>Hi, I'm {{name}}.</div>
+      <shadow></shadow>
+    </template>
+      ...
+  </polymer-element>
+
+Using `<superclass-element>` renders:
+
+    <div>My favorite color is red.</div>
+
+Using `<subclass-element>` renders:
+
+    <div>Hi, I'm Rob.</div>
+    <div>My favorite color is green.</div>
+
+[jsbin](http://jsbin.com/punam/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="superclass-element">
+  <template>
+    <div>My favorite color is {{color}}.</div>
+  </template>
+  <script>
+    Polymer({
+      color: "red"
+    });
+  </script>
+</polymer-element>
+
+<polymer-element name="subclass-element" extends="superclass-element">
+  <template>
+    <div>Hi, I'm {{name}}.</div>
+    <shadow></shadow>
+  </template>
+  <script>
+    Polymer({
+      name: "Rob",
+      color: "green"
+    });
+  </script>
+</polymer-element>
