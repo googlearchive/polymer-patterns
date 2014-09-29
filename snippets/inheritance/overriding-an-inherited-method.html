@@ -8,19 +8,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <!--
-# Overriding a superclass element method
+# Overriding a extendee element method
 
-Shows how to use and extend a superclass element method from the subclass
+Shows how to use and extend a extendee element method from the extender
 element.
 
-Use `this.super()` in the subclass element to invoke a superclass element
+Use `this.super()` in the extender element to invoke a extendee element
 method:
 
-    <polymer-element name="superclass-element">
+    <polymer-element name="extendee-element" attributes="message">
       ...
       <script>
         Polymer({
-          ...
           setMessage: function() {
             this.message = 'I like Ike';
           }
@@ -28,11 +27,10 @@ method:
       </script>
     </polymer-element>
 
-    <polymer-element name="subclass-element" extends="superclass-element">
+    <polymer-element name="extender-element" extends="extendee-element">
       ...
       <script>
         Polymer({
-          ...
           setMessage: function() {
             this.super();
             this.message += ', but I love Lucy.';
@@ -41,22 +39,22 @@ method:
       </script>
     </polymer-element>
 
-Note: While this sample does not use this feature, you can optionally pass a list of
-arguments to `super()`.
+Note: While this sample does not use this feature, you can optionally pass a
+list of arguments to `super()`. See the
+[official docs](https://www.polymer-project.org/docs/polymer/polymer.html#overriding-a-parents-methods).
 
 [jsbin](http://jsbin.com/raqoj/edit)
 -->
 
 <link rel="import" href="../../components/polymer/polymer.html">
 
-<polymer-element name="superclass-element">
+<polymer-element name="extendee-element" attributes="message">
   <template>
     <div>{{message}}</div>
     <button on-tap="{{setMessage}}">Show Message</button>
   </template>
   <script>
     Polymer({
-      message: '',
       setMessage: function() {
         this.message = 'I like Ike';
       }
@@ -64,13 +62,12 @@ arguments to `super()`.
   </script>
 </polymer-element>
 
-<polymer-element name="subclass-element" extends="superclass-element">
+<polymer-element name="extender-element" extends="extendee-element">
   <template>
     <shadow></shadow>
   </template>
   <script>
     Polymer({
-      message: '',
       setMessage: function() {
         this.super();
         this.message += ', but I love Lucy.';

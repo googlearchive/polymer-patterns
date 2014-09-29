@@ -18,19 +18,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="import" href="../../snippets/inheritance/extending-a-polymer-element.html">
 </head>
 <body>
-  <superclass-element></superclass-element>
-  <subclass-element></subclass-element>
+  <extendee-element></extendee-element>
+  <extender-element></extender-element>
 <script>
   document.addEventListener('polymer-ready', function() {
-    var superclassEl = document.querySelector('superclass-element');
-    var superclassDiv = superclassEl.shadowRoot.querySelector('div');
-    assert.match(superclassDiv.textContent, /red/);
+    var extendeeEl = document.querySelector('extendee-element');
+    var extendeeDiv = extendeeEl.shadowRoot.querySelector('div');
+    assert.match(extendeeDiv.textContent, /red/);
 
-    var subclassEl = document.querySelector('subclass-element');
-    var shadow = subclassEl.shadowRoot.querySelector('shadow');
+    var extenderEl = document.querySelector('extender-element');
+    var shadow = extenderEl.shadowRoot.querySelector('shadow');
     assert.isNotNull(shadow);
-    var subclassDiv = subclassEl.shadowRoot.querySelector('div');
-    assert.match(subclassDiv.textContent, new RegExp(subclassEl.name));
+    var extenderDiv = extenderEl.shadowRoot.querySelector('div');
+    assert.match(extenderDiv.textContent, new RegExp(extenderEl.name));
     done();
   });
 </script>

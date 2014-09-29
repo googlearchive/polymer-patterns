@@ -10,24 +10,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!--
 # Extending a Polymer element
 
-Shows how to extend an existing Polymer element.
+Shows how to extend an existing Polymer element's Shadow DOM.
 
-Use the `extends` argument when defining the subclass element, giving it the
-name of the element you are extending. This lets your subclass element
-inherit from and data bind to the superclass element's properties and methods:
+Use the `extends` attribute when defining the extender element, giving it the
+name of the element you are extending. This lets your extender element
+inherit from and data bind to the extendee element's properties and methods:
 
-    <polymer-element name="superclass-element">
+    <polymer-element name="extendee-element">
       ...
     </polymer-element>
 
-    <polymer-element name="subclass-element" extends="superclass-element">
+    <polymer-element name="extender-element" extends="extendee-element">
       ...
     </polymer-element>
 
-Include a `<shadow></shadow>` element in your subclass element `<template>`
-where you want the Shadow DOM from the superclass to appear:
+Include a `<shadow></shadow>` element in your extender element `<template>`
+where you want the Shadow DOM from the extendee to appear:
 
-  <polymer-element name="subclass-element" extends="superclass-element">
+  <polymer-element name="extender-element" extends="extendee-element">
     <template>
       <div>Hi, I'm {{name}}.</div>
       <shadow></shadow>
@@ -35,11 +35,11 @@ where you want the Shadow DOM from the superclass to appear:
       ...
   </polymer-element>
 
-Using `<superclass-element>` renders:
+Using `<extendee-element>` renders:
 
     <div>My favorite color is red.</div>
 
-Using `<subclass-element>` renders:
+Using `<extender-element>` renders:
 
     <div>Hi, I'm Rob.</div>
     <div>My favorite color is green.</div>
@@ -49,7 +49,7 @@ Using `<subclass-element>` renders:
 
 <link rel="import" href="../../components/polymer/polymer.html">
 
-<polymer-element name="superclass-element">
+<polymer-element name="extendee-element">
   <template>
     <div>My favorite color is {{color}}.</div>
   </template>
@@ -60,7 +60,7 @@ Using `<subclass-element>` renders:
   </script>
 </polymer-element>
 
-<polymer-element name="subclass-element" extends="superclass-element">
+<polymer-element name="extender-element" extends="extendee-element">
   <template>
     <div>Hi, I'm {{name}}.</div>
     <shadow></shadow>

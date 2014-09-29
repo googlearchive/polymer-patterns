@@ -16,20 +16,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="import" href="../../components/polymer-test-tools/tools.html">
   <script src="../../components/polymer-test-tools/htmltest.js"></script>
   <link rel="import"
-  href="../../snippets/inheritance/overriding-a-superclass-element-method.html">
+  href="../../snippets/inheritance/overriding-an-inherited-method.html">
 </head>
 <body>
-  <superclass-element></superclass-element>
-  <subclass-element></subclass-element>
+  <extendee-element></extendee-element>
+  <extender-element></extender-element>
 <script>
   document.addEventListener('polymer-ready', function() {
-    var superclassEl = document.querySelector('superclass-element');
-    var subclassEl = document.querySelector('subclass-element');
-    assert.notMatch(subclassEl.message, /Lucy/);
-    var shadow = subclassEl.shadowRoot.querySelector('shadow');
+    var extendeeEl = document.querySelector('extendee-element');
+    var extenderEl = document.querySelector('extender-element');
+    assert.notMatch(extenderEl.message, /Lucy/);
+    var shadow = extenderEl.shadowRoot.querySelector('shadow');
     var button = shadow.getDistributedNodes()[3];
     button.dispatchEvent(new Event('tap'));
-    assert.match(subclassEl.message, /Lucy/);
+    assert.match(extenderEl.message, /Lucy/);
     done();
   });
 </script>

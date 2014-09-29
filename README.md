@@ -42,7 +42,7 @@ See the [contribution guide](CONTRIBUTING.md).
 ### Inheritance
 
 - [Extending a Polymer element](snippets/inheritance/extending-a-polymer-element.html)
-- [Overriding a superclass element method](snippets/inheritance/overriding-a-superclass-element-method.html)
+- [Overriding an inherited method](snippets/inheritance/overriding-an-inherited-method.html)
 
 ### Forms
 
