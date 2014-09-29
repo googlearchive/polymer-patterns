@@ -1,0 +1,40 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Dynamically adding a Polymer element to the DOM
+
+Shows how to instantiate a Polymer element dynamically, set it's attributes,
+and insert it into the DOM.
+
+To set an attribute on a Polymer element using setAttribute() you must declare
+it using attributes in the element definition:
+
+    <polymer-element name="my-element" attributes="greeting" noscript>
+
+Read
+[Creating Elements](http://www.polymer-project.org/docs/start/creatingelements.html).
+
+[jsbin](http://jsbin.com/gelos/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="my-element" attributes="greeting" noscript>
+  <template>
+    <h1>{{greeting}}</h1>
+  </template>
+</polymer-element>
+
+<script>
+  var dynamicEl = document.createElement("my-element");
+  dynamicEl.setAttribute("id", "my-element-id");
+  dynamicEl.setAttribute("greeting", "Hello, Good Morning.");
+  document.body.appendChild(dynamicEl);
+</script>
