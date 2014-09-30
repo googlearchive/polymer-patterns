@@ -51,7 +51,8 @@ See the [contribution guide](CONTRIBUTING.md).
 - [Binding to a textarea](snippets/forms/binding-to-a-textarea.html)
 - [Selecting one item using radio buttons](snippets/forms/selecting-one-item-using-radio-buttons.html)
 - [Selecting many items using checkboxes](snippets/forms/selecting-many-items-using-checkboxes.html)
-- [Selecting items using the core-selector element](snippets/forms/selecting-items-using-the-core-selector-element.html)
+- [Selecting one item using the core-selector element](snippets/forms/selecting-one-item-using-the-core-selector-element.html)
+- [Selecting many items using the core-selector element](snippets/forms/selecting-many-items-using-the-core-selector-element.html)
 - [Implementing simple validation](snippets/forms/implementing-simple-validation.html)
 
 ### Observing Changes
