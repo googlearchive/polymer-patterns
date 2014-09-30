@@ -67,13 +67,13 @@ Read the
 
 <polymer-element name="child-element">
   <template>
-    <input type="text" placeholder="Write something">
+    <input type="text" placeholder="Write something" id="myInput">
     <button on-tap="{{fireEvent}}">Fire custom event</button>
   </template>
   <script>
     Polymer('child-element', {
       fireEvent: function(e, detail, sender) {
-        var message = this.shadowRoot.querySelector('input').value;
+        var message = this.$.myInput.value;
         this.fire('spoken', {message: message});
       }
     });
