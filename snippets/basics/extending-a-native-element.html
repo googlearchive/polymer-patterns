@@ -1,0 +1,83 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Extending a native HTML element
+
+Shows how to add new behaviour and style to a native HTML element
+
+When extending a native element you must use the `is` attribute, like
+`<button is="icon-button">`, not `<icon-button>`. An element that extends a
+native element in this way is called a **type extension**, and inherits the
+prototype and DOM of the parent.
+
+There are issues in current browser versions that prevent creating a new Shadow
+DOM for many types of element, so you cannot use a `<template>` in your extended
+element. In Chrome this list currently includes 'img', 'textarea', 'select',
+'canvas', and more. The full list can be seen in [the Chrome issue tracker](https://code.google.com/p/chromium/issues/detail?id=234020).
+
+[jsbin](http://jsbin.com/zesaqeruyo/1/)
+-->
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<!--
+A simple element that extends the Shadow DOM of a button element to include an
+image provided in the src atttribute. It also demonstrates overriding the
+default style of the extended element.
+-->
+<polymer-element name="icon-button" attributes="src" extends="button" noscript>
+  <template>
+    <style>
+      :host * {
+        vertical-align: middle;
+      }
+      :host {
+        height: 50px;
+        padding: 10px;
+        background-color: #eeee55;
+        border: 2px solid orange;
+        border-radius: 10px;
+      }
+      img {
+        margin-right: 10px;
+      }
+    </style>
+    <img src="{{src}}"/>
+    <content></content>
+  </template>
+</polymer-element>
+
+<!--
+Extending the behavior of the native anchor element to pre-fetch the URL on
+hover.
+-->
+<polymer-element name="hover-prefetch" extends="a" on-mouseover="prefetch">
+  <script>
+    Polymer({
+      requested: false,
+      prefetch: function() {
+        if (this.requested) {
+          return;
+        }
+
+        // Load the page and all of it's resources in a hidden IFrame.
+        var iframe = document.createElement('iframe');
+        iframe.style.visibility = 'hidden';
+        iframe.style.position = 'absolute';
+        iframe.src = this.href;
+        iframe.id = this.href;
+
+        // Append the IFrame to the DOM.
+        document.body.insertBefore(iframe, document.body.firstChild);
+
+        this.requested = true;
+      }
+    });
+  </script>
+</polymer-element>
