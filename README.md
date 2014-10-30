@@ -30,6 +30,7 @@ See the [contribution guide](CONTRIBUTING.md).
 - [Finding Shadow DOM elements](snippets/basics/finding-shadow-dom-elements.html)
 - [Using a computed property](snippets/basics/using-a-computed-property.html)
 - [Creating a one-time binding](snippets/basics/creating-a-one-time-binding.html)
+- [Extending a native HTML element](snippets/basics/extending-a-native-element.html)
 
 ### Control Flow
 
