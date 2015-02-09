@@ -1,0 +1,88 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+# Using Published Values in a Iterative (Repeated) Template
+
+Shows how you can refer to values published from Polymer elements created inside a
+`<template repeat="{{...}}">` loop. This allows you to refer to the published values
+elsewhere in the template, such as in a related `<template if="{{...}}">`.
+
+    <template repeat="{{ elementName in elementNames }}">
+      <div>
+        <child-element name="{{elementName}}"
+                       lengthOfName="{{lengths[elementName]}}">
+        </child-element>
+
+        <template if="{{ lengths[elementName] > longThreshold }}">
+          <em>(its name is longer than {{longThreshold}} characters!)</em>
+        </template>
+      </div>
+    </template>
+
+It's important to assign the published value (`lengthOfName`) to a object mapping (`lengths`)
+keyed by the unique value that identifies the element (`elementName`). You can then refer
+to the published value elsewhere in the repeated template by using the same object mapping
+(`lengths[elementName] > longThreshold`).
+
+It would be a mistake to assign the published value to a simple variable (e.g., `lengthOfName="{{nameLength}}"`).
+The `nameLength` variable would be overwritten each time through the iterative template,
+and only the last value would be used throughout the template.
+
+Read the
+[official documentation for iterative templates](http://www.polymer-project.org/docs/polymer/binding-types.html#iterative-templates).
+
+[jsbin](http://jsbin.com/yuziw/edit)
+-->
+
+<link rel="import" href="../../components/polymer/polymer.html">
+
+<polymer-element name="child-element" attributes="name lengthOfName">
+  <template>
+    <code>This is &lt;child-element&gt;</code> "{{name}}".
+  </template>
+
+  <script>
+    Polymer({
+      lengthOfName: 0,
+      name: '',
+      nameChanged: function() {
+        this.lengthOfName = this.name.length;
+      }
+    });
+  </script>
+</polymer-element>
+
+<polymer-element name="my-element" attributes="elementNames longThreshold">
+  <template>
+    <template repeat="{{ elementName in elementNames }}">
+      <div>
+        <child-element name="{{elementName}}"
+                       lengthOfName="{{lengths[elementName]}}">
+        </child-element>
+
+        <template if="{{ lengths[elementName] > longThreshold }}">
+          <em>(its name is longer than {{longThreshold}} characters!)</em>
+        </template>
+      </div>
+    </template>
+  </template>
+
+  <script>
+    Polymer({
+      longThreshold: 0,
+      lengths: null,
+      elementNames: null,
+      ready: function() {
+        this.lengths = {};
+        this.elementNames = [];
+      }
+    });
+  </script>
+</polymer-element>
